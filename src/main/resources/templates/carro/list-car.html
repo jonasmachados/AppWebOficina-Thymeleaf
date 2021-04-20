@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">  
+    <head>
+        <title>Module Car</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <h2 class="h2Categories">List of Cars</h2>
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="thTable">Id</th>
+                        <th class="thTable">Name</th>
+                        <th class="thTable">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="carro : ${carros}">
+                        <td th:text="${carro.id}">id</td>
+                        <td th:text="${carro.modelo}">modelo</td>
+                        <td th:text="${carro.marca}">marca</td>
+                        <!--                        <td>
+                                                    <a th:href="@{/edit{id}(id=${carro.id})}" class="btn btn-dark">
+                                                        <i class="fas fa-user-edit ml-2"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/delete/{id}(id=${category.id})}" class="btn btn-dark">
+                                                        <i class="fas fa-user-times ml-2"></i>
+                                                    </a>
+                                                </td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
