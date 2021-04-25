@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Css -->
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/footerNew.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/container.css">
+
+    </head>
+
+    <header class="header">
+        <input type="checkbox" id="bt_menu"> 
+        <label for="bt_menu">&#9776;</label>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="#">Cadastros</a>
+                    <ul>
+                        <li><a href="#">Clientes</a></li>
+                        <li><a href="carros">Carros</a></li>
+                        <li><a href="#">Mecanicos</a></li>
+                        <li><a href="#">Pecas</a></li>
+                        <li><a href="#">Notas de Servicos</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Relatorios</a>
+                    <ul>
+                        <li><a href="#">Carros cadastrados</a></li>
+                        <li><a href="#">Mecanicos cadastrados</a></li>
+                        <li><a href="#">Pecas cadastrados</a></li>
+                        <li><a href="#">Servicos por Oficina</a></li>
+                        <li><a href="#">Servicos por Carro</a></li>
+                        <li><a href="#">Servicos por Mecanicos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav> 
+    </header>
+
+    <body>
+        <div>
+
+        </div>
+
+    </body>
+
+    <footer>
+        <div class="footerNew">
+            <ul class="ulFooter">
+                <li>  <a th:href="@{https://www.instagram.com/jonasmachado01/}">
+                        <img class="icon-midias-sociais" src="img/instagram.png"> 
+                    </a></li>
+                <li>  <a th:href="@{https://www.linkedin.com/in/jonas-machado-2a29a741/}">
+                        <img class="icon-midias-sociais" src="img/linkedin.png">
+                    </a></li>
+                <li> <a th:href="@{https://github.com/jonasmachados}">
+                        <img class="icon-midias-sociais" src="img/git.png"> 
+                    </a></li>
+                <li><p class="pFooter">Developed by Jonas Machado</p> </li>
+
+            </ul> 
+
+        </div>
+    </footer>
+</html>
