@@ -10,6 +10,5 @@ public class MainController {
     public String root() {
         return "index";
     }
-
    
 }

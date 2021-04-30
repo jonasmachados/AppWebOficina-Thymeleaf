@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">  
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
     <head>
-        <title>Module Car</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        <link rel="stylesheet" href="css/cursos.css">
+        <link rel="stylesheet" href="css/carros.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/footerNew.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/container.css">
+      
     </head>
+
     <body>
-        <div>
-            <h2 class="h2Categories">List of Cars</h2>
+        <div class="carros container" layout:fragment="content">
+            <div class="divBt-car">
+                <a href="/" class="btn btn-dark btn-lg divBt">
+                    Add New Car</a>
+            </div>
+            <h2 class="h2-car">List of Cars</h2>
+
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
                     <tr>
@@ -35,5 +50,6 @@
                 </tbody>
             </table>
         </div>
+
     </body>
 </html>

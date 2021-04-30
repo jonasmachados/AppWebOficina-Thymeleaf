@@ -1,0 +1,73 @@
+.divBt-car{
+    padding-top: 1em;
+}
+.h2-car{
+    padding-top: 1em;
+    font-size: 2em;
+    color: #000000;
+    padding-bottom: 1em;
+}
+.box-Principal-Book{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.boxLoginBook{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-top:solid .1em;
+    border-bottom:solid .1em;
+    border-color: #696969;
+    height: 25em;
+    width: 40em;
+}
+.h3-car{
+    padding-top: .5em;
+    padding-bottom: 1em;
+    size: 1em;
+    text-align: center;
+    color: #FFFFFF;
+
+}
+.form-car{
+    height: 3em;
+    width: 30em;
+    margin-top: 1em;
+    border-radius:5px;
+    border:solid .1em;
+    border-color: #696969;
+    box-shadow: 2px 2px 2px 1px #696969;
+    padding-left: 5%; 
+    font-size: 1em;
+}
+.btn{
+    background-color: #696969;
+    color: #FFFFFF;
+}
+.divBottom{
+    height: 5em;
+}
+.bt-subimit{
+    margin-top: 2em;
+    padding-left: 5%;
+}
+
+@media(max-width:800px){
+    .th-car{
+        display:none;
+    }
+    .boxLoginCar{
+        width: 20em;
+        height: 26em;
+    }
+    .form-car{
+        width: 20em;
+
+    }
+    .bt-subimit{
+        margin-top: 1em;
+    }
+}
+
