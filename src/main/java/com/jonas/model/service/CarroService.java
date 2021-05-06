@@ -1,9 +1,11 @@
 package com.jonas.model.service;
 
+import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.Carro;
 import com.jonas.repository.CarroRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,44 @@ public class CarroService {
             return result;
         } else {
             return new ArrayList<Carro>();
+        }
+    }
+
+    public Carro createOrUpdateCarro(Carro entity) {
+        if (entity.getId() == null) {
+            entity = repository.save(entity);
+            return entity;
+        } else {
+            Optional<Carro> carro = repository.findById(entity.getId());
+
+            if (carro.isPresent()) {
+                Carro newCarro = carro.get();
+                newCarro.setModelo(entity.getModelo());
+                newCarro.setAno(entity.getAno());
+                newCarro.setChassi(entity.getChassi());
+                newCarro.setCombustivel(entity.getCombustivel());
+                newCarro.setCor(entity.getCor());
+                newCarro.setMarca(entity.getMarca());
+                newCarro.setRenavan(entity.getRenavan());
+
+                newCarro = repository.save(newCarro);
+
+                return newCarro;
+            } else {
+                entity = repository.save(entity);
+
+                return entity;
+            }
+        }
+    }
+
+    public Carro getCarroById(Integer id) throws RecordNotFoundException {
+        Optional<Carro> carro = repository.findById(id);
+
+        if (carro.isPresent()) {
+            return carro.get();
+        } else {
+            throw new RecordNotFoundException("No car record exist for given id");
         }
     }
 

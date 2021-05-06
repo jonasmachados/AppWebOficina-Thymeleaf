@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+   <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        <link rel="stylesheet" href="css/cursos.css">
+        <link rel="stylesheet" href="css/carros.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/footerNew.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/container.css">
+      
+    </head>
+
+    <body>
+        <div class="carros" layout:fragment="content">
+            <div class="box-Principal-Carro">
+                <h3 class="h3-car"> Register of Books</h3>
+
+                <div class="boxLoginBook">
+                    <form action="#" th:action="@{/createCar}" th:object="${carro}" method="post">
+
+                        <div>
+                            <label for="Modelo"></label> 
+                            <input type="text" th:field="*{modelo}" class="form-car" id="modelo" placeholder="Modelo" />
+                        </div>
+                      <div>
+                            <label for="Marca"></label> 
+                            <input type="text" th:field="*{marca}" class="form-car" id="marca" placeholder="Marca" />
+                        </div>
+                        <!--  <div>
+                            <label for="text"></label> 
+                            <input type="text" th:field="*{text}" class="form-Book" id="description" placeholder="Text" />
+                        </div>  
+
+                        <div class="dropdown-books">
+                            <select class="form-control form-control-lg" th:field="*{category}" >
+                                <option value="" selected="selected">-- Select a Category --</option>
+                                <option th:each="category : ${listCategory}" th:value="${category.id}" th:text="${category.name}" />
+                            </select>
+                        </div>-->
+
+                        <div class="bt-subimit">
+                            <input type="submit" class="btn btn-dark btn-lg" value=" Submit ">
+                        </div>
+
+                        <input type="hidden" id="id" th:field="*{id}">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

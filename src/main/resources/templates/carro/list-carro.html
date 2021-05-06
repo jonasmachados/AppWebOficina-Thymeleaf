@@ -18,7 +18,7 @@
     <body>
         <div class="carros container" layout:fragment="content">
             <div class="divBt-car">
-                <a href="/" class="btn btn-dark btn-lg divBt">
+                <a href="/edit" class="btn btn-dark btn-lg divBt">
                     Add New Car</a>
             </div>
             <h2 class="h2-car">List of Cars</h2>
@@ -36,16 +36,11 @@
                         <td th:text="${carro.id}">id</td>
                         <td th:text="${carro.modelo}">modelo</td>
                         <td th:text="${carro.marca}">marca</td>
-                        <!--                        <td>
+                                               <td>
                                                     <a th:href="@{/edit{id}(id=${carro.id})}" class="btn btn-dark">
                                                         <i class="fas fa-user-edit ml-2"></i>
                                                     </a>
-                                                </td>
-                                                <td>
-                                                    <a th:href="@{/delete/{id}(id=${category.id})}" class="btn btn-dark">
-                                                        <i class="fas fa-user-times ml-2"></i>
-                                                    </a>
-                                                </td>-->
+                                                </td>                                              
                     </tr>
                 </tbody>
             </table>
