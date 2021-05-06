@@ -40,7 +40,13 @@
                                                     <a th:href="@{/edit{id}(id=${carro.id})}" class="btn btn-dark">
                                                         <i class="fas fa-user-edit ml-2"></i>
                                                     </a>
-                                                </td>                                              
+                                                </td>
+                                               
+                                                <td>
+                                                    <a th:href="@{/delete/{id}(id=${carro.id})}" class="btn btn-dark">
+                                                        <i class="fas fa-user-times ml-2"></i>
+                                                    </a>
+                                                </td>
                     </tr>
                 </tbody>
             </table>

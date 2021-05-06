@@ -66,4 +66,14 @@ public class CarroService {
         }
     }
 
+    public void deleteCarroById(Integer id) throws RecordNotFoundException {
+        Optional<Carro> category = repository.findById(id);
+
+        if (category.isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new RecordNotFoundException("No category record exist for given id");
+        }
+    }
+
 }

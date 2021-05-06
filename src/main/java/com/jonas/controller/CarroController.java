@@ -48,4 +48,11 @@ public class CarroController {
         return "redirect:/carros"; //REDIRECT: back to previous HTML.
     }
 
+    @RequestMapping(path = "/delete/{id}")
+    public String deleteCarroById(Model model, @PathVariable("id") Integer id)
+            throws RecordNotFoundException {
+        service.deleteCarroById(id);
+        return "redirect:/carros";
+    }
+
 }
