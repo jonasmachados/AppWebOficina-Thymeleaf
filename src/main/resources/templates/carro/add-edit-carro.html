@@ -19,7 +19,7 @@
     <body>
         <div class="carros" layout:fragment="content">
             <div class="box-Principal-Carro">
-                <h3 class="h3-car"> Register of Books</h3>
+                <h3 class="h3-car"> Register of Car</h3>
 
                 <div class="boxLoginBook">
                     <form action="#" th:action="@{/createCar}" th:object="${carro}" method="post">
@@ -32,18 +32,28 @@
                             <label for="Marca"></label> 
                             <input type="text" th:field="*{marca}" class="form-car" id="marca" placeholder="Marca" />
                         </div>
-                        <!--  <div>
-                            <label for="text"></label> 
-                            <input type="text" th:field="*{text}" class="form-Book" id="description" placeholder="Text" />
-                        </div>  
-
-                        <div class="dropdown-books">
-                            <select class="form-control form-control-lg" th:field="*{category}" >
-                                <option value="" selected="selected">-- Select a Category --</option>
-                                <option th:each="category : ${listCategory}" th:value="${category.id}" th:text="${category.name}" />
-                            </select>
-                        </div>-->
-
+                        
+                        <div>
+                            <label for="Ano"></label> 
+                            <input type="text" th:field="*{ano}" class="form-car" id="ano" placeholder="Ano" />
+                        </div>
+                        <div>
+                            <label for="Chassi"></label> 
+                            <input type="text" th:field="*{chassi}" class="form-car" id="chassi" placeholder="chassi" />
+                        </div>
+                        <div>
+                            <label for="Combustivel"></label> 
+                            <input type="text" th:field="*{combustivel}" class="form-car" id="combustivel" placeholder="Combustivel" />
+                        </div>
+                        <div>
+                            <label for="Cor"></label> 
+                            <input type="text" th:field="*{cor}" class="form-car" id="cor" placeholder="Cor" />
+                        </div>
+                        <div>
+                            <label for="Renavan"></label> 
+                            <input type="text" th:field="*{renavan}" class="form-car" id="renavan" placeholder="Renavan" />
+                        </div>
+                       
                         <div class="bt-subimit">
                             <input type="submit" class="btn btn-dark btn-lg" value=" Submit ">
                         </div>

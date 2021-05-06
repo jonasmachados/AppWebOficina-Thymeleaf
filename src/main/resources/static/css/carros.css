@@ -1,34 +1,32 @@
 .divBt-car{
-    padding-top: 1em;
+    padding-top: 5em;
 }
 .h2-car{
+    font-size: 1.5em;
+    padding-left: 50%;
     padding-top: 1em;
-    font-size: 2em;
-    color: #000000;
-    padding-bottom: 1em;
+    padding-bottom: .5em;
+    color: #696969;
 }
 .box-Principal-Carro{
     display: grid;
     justify-content: center;
     align-items: center;
+    padding-top: 3em;
 }
 .boxLoginBook{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     border-top:solid .1em;
     border-bottom:solid .1em;
     border-color: #696969;
-    height: 25em;
-    width: 40em;
+    height: 40em;
+    width: 100%;
 }
 .h3-car{
-    padding-top: .5em;
+    padding-top: 2em;
     padding-bottom: 1em;
     size: 1em;
     text-align: center;
-    color: #FFFFFF;
+    color: #696969;
 
 }
 .form-car{
@@ -55,6 +53,9 @@
 }
 
 @media(max-width:800px){
+    .box-Principal-Carro{
+        padding-top: 0;
+    }
     .th-car{
         display:none;
     }
