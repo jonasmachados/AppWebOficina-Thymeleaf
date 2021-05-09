@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        <link rel="stylesheet" href="css/mecanico/mecanico.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/container.css">
+    </head>
+    <body>
+        <div class="carros container" layout:fragment="content">
+            <h2 class="h2-mecanico">List of Mechanics</h2>
+
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="thTable">Id</th>
+                        <th class="thTable">Razao Social</th>
+                        <th class="thTable">Cpf/Cnpj</th>                        
+                        <th class="thTable">Cep</th>
+                        <th class="thTable">endereco</th>
+                        <th class="thTable">numero</th>
+                        <th class="thTable">bairro</th>
+                        <th class="thTable">cidade</th>
+                        <th class="thTable">telefone</th>
+                        <th class="thTable">Data de Criacao</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mecanico : ${mecanicos}">
+                        <td th:text="${mecanico.id}">id</td>
+                        <td th:text="${mecanico.razaoSocial}">razaoSociall</td>
+                        <td th:text="${mecanico.cpf_Cnpj}">cpf_Cnpj</td>        
+                        <td th:text="${mecanico.cep}">cep</td>
+                        <td th:text="${mecanico.endereco}">endereco</td>
+                        <td th:text="${mecanico.numero}">numero</td>
+                        <td th:text="${mecanico.bairro}">bairro</td>
+                        <td th:text="${mecanico.cidade}">cidade</td>
+                        <td th:text="${mecanico.telefone}">telefone</td>
+                        <td th:text="${mecanico.telefone}">dataCriacao</td>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
