@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        <link rel="stylesheet" href="css/peca/peca.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/container.css">
+    </head>
+    <body>
+        <div class="carros container" layout:fragment="content">
+            <h2 class="h2-peca">List of car Parts</h2>
+
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="thTable">Id</th>
+                        <th class="thTable">Descricao</th>
+                        <th class="thTable">Data da Compra</th>                        
+                        <th class="thTable">Preco</th>                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="peca : ${pecas}">
+                        <td th:text="${peca.id}">id</td>
+                        <td th:text="${peca.Descricao}">Descricao</td>
+                        <td th:text="${peca.dataCompra}">dataCompra</td>        
+                        <td th:text="${peca.preco}">preco</td>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
