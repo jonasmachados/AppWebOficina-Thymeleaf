@@ -5,6 +5,9 @@
     padding-bottom: 1em;
     color: #696969;
 }
+.divBt-mecanico{
+    padding-bottom: 2em;
+}
 .thTable{
     background-color: #696969;
 }
@@ -18,7 +21,7 @@
     border-top:solid .1em;
     border-bottom:solid .1em;
     border-color: #696969;
-    height: 41em;
+    height: 50em;
     width: 100%;
 }
 .h3-mecanico{

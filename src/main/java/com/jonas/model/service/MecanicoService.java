@@ -69,13 +69,13 @@ public class MecanicoService {
         }
     }
 
-//    public void deleteCarroById(Integer id) throws RecordNotFoundException {
-//        Optional<Carro> category = repository.findById(id);
-//
-//        if (category.isPresent()) {
-//            repository.deleteById(id);
-//        } else {
-//            throw new RecordNotFoundException("No category record exist for given id");
-//        }
-//    }
+    public void deleteMecanicoById(Integer id) throws RecordNotFoundException {
+        Optional<Mecanico> category = repository.findById(id);
+
+        if (category.isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new RecordNotFoundException("No mecanico record exist for given id");
+        }
+    }
 }

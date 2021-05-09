@@ -20,7 +20,7 @@ and open the template in the editor.
         <div class="carros container" layout:fragment="content">
             <h2 class="h2-mecanico">List of Mechanics</h2>
 
-            <div class="divBt-mechanic">
+            <div class="divBt-mecanico">
                 <a href="/edit" class="btn btn-dark btn-lg divBt">
                     Add New Mechanic</a>
             </div>
@@ -52,10 +52,15 @@ and open the template in the editor.
                         <td th:text="${mecanico.bairro}">bairro</td>
                         <td th:text="${mecanico.cidade}">cidade</td>
                         <td th:text="${mecanico.telefone}">telefone</td>
-                        <td th:text="${mecanico.telefone}">dataCriacao</td>
+                        <td th:text="${mecanico.dataCriacao}">dataCriacao</td>
                         <td>
                             <a th:href="@{/editMecanico{id}(id=${mecanico.id})}" class="btn btn-dark">
                                 <i class="fas fa-user-edit ml-2"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a th:href="@{/deleteMecanico/{id}(id=${mecanico.id})}" class="btn btn-dark">
+                                <i class="fas fa-user-times ml-2"></i>
                             </a>
                         </td>
                 </tbody>

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.springframework.format.annotation.DateTimeFormat;
 //import javax.validation.constraints.NotEmpty;
 //import org.hibernate.validator.constraints.Length;
 
@@ -35,6 +36,8 @@ public class Mecanico implements Serializable {
     private String cidade;
     private Integer telefone;
     private String adicionais;
+    
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dataCriacao;
 
     @JsonIgnore
