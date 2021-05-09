@@ -27,45 +27,48 @@ public class MecanicoService {
             return new ArrayList<Mecanico>();
         }
     }
-//
-//    public Carro createOrUpdateCarro(Carro entity) {
-//        if (entity.getId() == null) {
-//            entity = repository.save(entity);
-//            return entity;
-//        } else {
-//            Optional<Carro> carro = repository.findById(entity.getId());
-//
-//            if (carro.isPresent()) {
-//                Carro newCarro = carro.get();
-//                newCarro.setModelo(entity.getModelo());
-//                newCarro.setAno(entity.getAno());
-//                newCarro.setChassi(entity.getChassi());
-//                newCarro.setCombustivel(entity.getCombustivel());
-//                newCarro.setCor(entity.getCor());
-//                newCarro.setMarca(entity.getMarca());
-//                newCarro.setRenavan(entity.getRenavan());
-//
-//                newCarro = repository.save(newCarro);
-//
-//                return newCarro;
-//            } else {
-//                entity = repository.save(entity);
-//
-//                return entity;
-//            }
-//        }
-//    }
-//
-//    public Carro getCarroById(Integer id) throws RecordNotFoundException {
-//        Optional<Carro> carro = repository.findById(id);
-//
-//        if (carro.isPresent()) {
-//            return carro.get();
-//        } else {
-//            throw new RecordNotFoundException("No car record exist for given id");
-//        }
-//    }
-//
+
+    public Mecanico createOrUpdateMecanico(Mecanico entity) {
+        if (entity.getId() == null) {
+            entity = repository.save(entity);
+            return entity;
+        } else {
+            Optional<Mecanico> mecanico = repository.findById(entity.getId());
+
+            if (mecanico.isPresent()) {
+                Mecanico newMecanico = mecanico.get();
+                newMecanico.setRazaoSocial(entity.getRazaoSocial());
+                newMecanico.setCpf_Cnpj(entity.getCpf_Cnpj());
+                newMecanico.setCep(entity.getCep());
+                newMecanico.setEndereco(entity.getEndereco());
+                newMecanico.setNumero(entity.getNumero());
+                newMecanico.setBairro(entity.getBairro());
+                newMecanico.setCidade(entity.getCidade());
+                newMecanico.setTelefone(entity.getTelefone());
+                newMecanico.setAdicionais(entity.getAdicionais());
+                newMecanico.setDataCriacao(entity.getDataCriacao());
+
+                newMecanico = repository.save(newMecanico);
+
+                return newMecanico;
+            } else {
+                entity = repository.save(entity);
+
+                return entity;
+            }
+        }
+    }
+
+    public Mecanico getMecanicoById(Integer id) throws RecordNotFoundException {
+        Optional<Mecanico> mecanico = repository.findById(id);
+
+        if (mecanico.isPresent()) {
+            return mecanico.get();
+        } else {
+            throw new RecordNotFoundException("No mecanico record exist for given id");
+        }
+    }
+
 //    public void deleteCarroById(Integer id) throws RecordNotFoundException {
 //        Optional<Carro> category = repository.findById(id);
 //
@@ -75,5 +78,4 @@ public class MecanicoService {
 //            throw new RecordNotFoundException("No category record exist for given id");
 //        }
 //    }
-
 }

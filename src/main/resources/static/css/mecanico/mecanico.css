@@ -8,4 +8,52 @@
 .thTable{
     background-color: #696969;
 }
+.box-Principal-Mecanico{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5em;
+}
+.boxLoginMecanico{
+    border-top:solid .1em;
+    border-bottom:solid .1em;
+    border-color: #696969;
+    height: 41em;
+    width: 100%;
+}
+.h3-mecanico{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    size: 1em;
+    text-align: center;
+    color: #696969;
+}
+.bt-subimit{
+    margin-top: 2em;
+    padding-left: 5%;
+}
+.form-mecanico{
+    height: 3em;
+    width: 30em;
+    margin-top: 1em;
+    border-radius:5px;
+    border:solid .1em;
+    border-color: #696969;
+    box-shadow: 2px 2px 2px 1px #696969;
+    padding-left: 5%; 
+    font-size: 1em;
+}
+
+@media(max-width:800px){
+    .box-Principal-Carro{
+        padding-top: 0;
+    }
+     .bt-subimit{
+        margin-top: 1em;
+    }
+    .form-mecanico{
+        width: 20em;
+
+    }
+}
 

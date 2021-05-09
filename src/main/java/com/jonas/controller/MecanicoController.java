@@ -30,29 +30,28 @@ public class MecanicoController {
         return "mecanico/list-mecanico";
     }
 
-//    @RequestMapping(path = {"/edit", "/edit{id}"})
-//    public String editCategoryById(Model model, @PathVariable("id") Optional<Integer> id)
-//            throws RecordNotFoundException {
-//        if (id.isPresent()) {
-//            Carro entity = service.getCarroById(id.get());
-//            model.addAttribute("carro", entity);
-//        } else {
-//            model.addAttribute("carro", new Carro());
-//        }
-//        return "carro/add-edit-carro";
-//    }
-//
-//    @RequestMapping(path = "/createCar", method = RequestMethod.POST)
-//    public String createOrUpdateCarro(Carro carro) {
-//        service.createOrUpdateCarro(carro);
-//        return "redirect:/carros"; //REDIRECT: back to previous HTML.
-//    }
-//
+    @RequestMapping(path = {"/editMecanico", "/editMecanico{id}"})
+    public String editMecanicoById(Model model, @PathVariable("id") Optional<Integer> id)
+            throws RecordNotFoundException {
+        if (id.isPresent()) {
+            Mecanico entity = service.getMecanicoById(id.get());
+            model.addAttribute("mecanico", entity);
+        } else {
+            model.addAttribute("mecanico", new Mecanico());
+        }
+        return "mecanico/add-edit-mecanico";
+    }
+
+    @RequestMapping(path = "/createMecanico", method = RequestMethod.POST)
+    public String createOrUpdateMecanico(Mecanico mecanico) {
+        service.createOrUpdateMecanico(mecanico);
+        return "redirect:/mecanicos"; //REDIRECT: back to previous HTML.
+    }
+
 //    @RequestMapping(path = "/delete/{id}")
 //    public String deleteCarroById(Model model, @PathVariable("id") Integer id)
 //            throws RecordNotFoundException {
 //        service.deleteCarroById(id);
 //        return "redirect:/carros";
 //    }
-
 }
