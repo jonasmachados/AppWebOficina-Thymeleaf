@@ -1,4 +1,10 @@
-.h2-peca{
+.peca{
+    padding-bottom: 4em
+}
+.divBt-peca{
+    padding-top: 5em;
+}
+h2-peca{
     font-size: 1.5em;
     padding-left: 40%;
     padding-top: 3em;

@@ -1,3 +1,6 @@
+.mecanico{
+    padding-bottom: 4em
+}
 .h2-mecanico{
     font-size: 1.5em;
     padding-left: 40%;
@@ -51,7 +54,7 @@
     .box-Principal-Carro{
         padding-top: 0;
     }
-     .bt-subimit{
+    .bt-subimit{
         margin-top: 1em;
     }
     .form-mecanico{

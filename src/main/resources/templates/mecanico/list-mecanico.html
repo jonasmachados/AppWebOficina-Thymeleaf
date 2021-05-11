@@ -52,7 +52,7 @@ and open the template in the editor.
                         <td th:text="${mecanico.bairro}">bairro</td>
                         <td th:text="${mecanico.cidade}">cidade</td>
                         <td th:text="${mecanico.telefone}">telefone</td>
-                        <td th:text="${mecanico.dataCriacao}">dataCriacao</td>
+                        <td th:text="${#dates.format(mecanico.dataCriacao, 'dd-MMM-yyyy')}">dataCriacao</td>
                         <td>
                             <a th:href="@{/editMecanico{id}(id=${mecanico.id})}" class="btn btn-dark">
                                 <i class="fas fa-user-edit ml-2"></i>
