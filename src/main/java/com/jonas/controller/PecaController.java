@@ -29,24 +29,24 @@ public class PecaController {
         model.addAttribute("pecas", list);
         return "peca/list-peca";
     }
-//
-//    @RequestMapping(path = {"/editMecanico", "/editMecanico{id}"})
-//    public String editMecanicoById(Model model, @PathVariable("id") Optional<Integer> id)
-//            throws RecordNotFoundException {
-//        if (id.isPresent()) {
-//            Mecanico entity = service.getMecanicoById(id.get());
-//            model.addAttribute("mecanico", entity);
-//        } else {
-//            model.addAttribute("mecanico", new Mecanico());
-//        }
-//        return "mecanico/add-edit-mecanico";
-//    }
-//
-//    @RequestMapping(path = "/createMecanico", method = RequestMethod.POST)
-//    public String createOrUpdateMecanico(Mecanico mecanico) {
-//        service.createOrUpdateMecanico(mecanico);
-//        return "redirect:/mecanicos"; //REDIRECT: back to previous HTML.
-//    }
+
+    @RequestMapping(path = {"/editPeca", "/editPeca{id}"})
+    public String editPecaById(Model model, @PathVariable("id") Optional<Integer> id)
+            throws RecordNotFoundException {
+        if (id.isPresent()) {
+            Pecas entity = service.getPecasById(id.get());
+            model.addAttribute("peca", entity);
+        } else {
+            model.addAttribute("peca", new Pecas());
+        }
+        return "peca/add-edit-pecas";
+    }
+
+    @RequestMapping(path = "/createPeca", method = RequestMethod.POST)
+    public String createOrUpdatePecas(Pecas peca) {
+        service.createOrUpdatePecas(peca);
+        return "redirect:/pecas"; //REDIRECT: back to previous HTML.
+    }
 //
 //    @RequestMapping(path = "/deleteMecanico/{id}")
 //   public String deleteCarroById(Model model, @PathVariable("id") Integer id)

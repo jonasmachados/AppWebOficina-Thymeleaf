@@ -28,46 +28,39 @@ public class PecaService {
         }
     }
 
-//    public Mecanico createOrUpdateMecanico(Mecanico entity) {
-//        if (entity.getId() == null) {
-//            entity = repository.save(entity);
-//            return entity;
-//        } else {
-//            Optional<Mecanico> mecanico = repository.findById(entity.getId());
-//
-//            if (mecanico.isPresent()) {
-//                Mecanico newMecanico = mecanico.get();
-//                newMecanico.setRazaoSocial(entity.getRazaoSocial());
-//                newMecanico.setCpf_Cnpj(entity.getCpf_Cnpj());
-//                newMecanico.setCep(entity.getCep());
-//                newMecanico.setEndereco(entity.getEndereco());
-//                newMecanico.setNumero(entity.getNumero());
-//                newMecanico.setBairro(entity.getBairro());
-//                newMecanico.setCidade(entity.getCidade());
-//                newMecanico.setTelefone(entity.getTelefone());
-//                newMecanico.setAdicionais(entity.getAdicionais());
-//                newMecanico.setDataCriacao(entity.getDataCriacao());
-//
-//                newMecanico = repository.save(newMecanico);
-//
-//                return newMecanico;
-//            } else {
-//                entity = repository.save(entity);
-//
-//                return entity;
-//            }
-//        }
-//    }
-//
-//    public Mecanico getMecanicoById(Integer id) throws RecordNotFoundException {
-//        Optional<Mecanico> mecanico = repository.findById(id);
-//
-//        if (mecanico.isPresent()) {
-//            return mecanico.get();
-//        } else {
-//            throw new RecordNotFoundException("No mecanico record exist for given id");
-//        }
-//    }
+    public Pecas createOrUpdatePecas(Pecas entity) {
+        if (entity.getId() == null) {
+            entity = repository.save(entity);
+            return entity;
+        } else {
+            Optional<Pecas> pecas = repository.findById(entity.getId());
+
+            if (pecas.isPresent()) {
+                Pecas newPeca = pecas.get();
+                newPeca.setDescricao(entity.getDescricao());
+                newPeca.setDataCompra(entity.getDataCompra());
+                newPeca.setPreco(entity.getPreco());
+
+                newPeca = repository.save(newPeca);
+
+                return newPeca;
+            } else {
+                entity = repository.save(entity);
+
+                return entity;
+            }
+        }
+    }
+
+    public Pecas getPecasById(Integer id) throws RecordNotFoundException {
+        Optional<Pecas> peca = repository.findById(id);
+
+        if (peca.isPresent()) {
+            return peca.get();
+        } else {
+            throw new RecordNotFoundException("No peca record exist for given id");
+        }
+    }
 //
 //    public void deleteMecanicoById(Integer id) throws RecordNotFoundException {
 //        Optional<Mecanico> category = repository.findById(id);

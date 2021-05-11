@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AppWeb Oficina</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        <!--CSS-->
+        <link rel="stylesheet" href="css/peca/peca.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/container.css">
+
+    </head>
+
+    <body>
+        <div class="peca" layout:fragment="content">
+            <div class="box-Principal-Peca">
+                <h3 class="h3-peca"> Register a new part of car</h3>
+
+                <div class="boxLoginPeca">
+                    <form action="#" th:action="@{/createPeca}" th:object="${peca}" method="post">
+
+                        <div>
+                            <label for="Descricao"></label> 
+                            <input type="text" th:field="*{Descricao}" class="form-peca" id="Descricao" placeholder="Descricao" />
+                        </div>
+                        <div>
+                            <label for="dataCompra"></label> 
+                            <input type="text" th:field="*{dataCompra}" class="form-peca" id="dataCompra" placeholder="Data da Compra" />
+                        </div>
+                        <div>
+                            <label for="preco"></label> 
+                            <input type="text" th:field="*{preco}" class="form-peca" id="preco" placeholder="Preco" />
+                        </div>
+
+                        
+
+                        <div class="bt-subimit">
+                            <input type="submit" class="btn btn-dark btn-lg" value=" Submit ">
+                        </div>
+
+                        <input type="hidden" id="id" th:field="*{id}">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

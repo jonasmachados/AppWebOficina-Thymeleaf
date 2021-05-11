@@ -36,8 +36,6 @@ public class Mecanico implements Serializable {
     private String cidade;
     private Integer telefone;
     private String adicionais;
-    
-    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date dataCriacao;
 
     @JsonIgnore
