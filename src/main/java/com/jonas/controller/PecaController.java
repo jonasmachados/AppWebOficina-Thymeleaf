@@ -47,11 +47,11 @@ public class PecaController {
         service.createOrUpdatePecas(peca);
         return "redirect:/pecas"; //REDIRECT: back to previous HTML.
     }
-//
-//    @RequestMapping(path = "/deleteMecanico/{id}")
-//   public String deleteCarroById(Model model, @PathVariable("id") Integer id)
-//           throws RecordNotFoundException {
-//        service.deleteMecanicoById(id);
-//       return "redirect:/mecanicos";
-//   }
+
+    @RequestMapping(path = "/deletePeca/{id}")
+    public String deletePecaById(Model model, @PathVariable("id") Integer id)
+            throws RecordNotFoundException {
+        service.deletePecaById(id);
+        return "redirect:/pecas";
+    }
 }

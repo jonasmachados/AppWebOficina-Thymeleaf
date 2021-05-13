@@ -61,14 +61,14 @@ public class PecaService {
             throw new RecordNotFoundException("No peca record exist for given id");
         }
     }
-//
-//    public void deleteMecanicoById(Integer id) throws RecordNotFoundException {
-//        Optional<Mecanico> category = repository.findById(id);
-//
-//        if (category.isPresent()) {
-//            repository.deleteById(id);
-//        } else {
-//            throw new RecordNotFoundException("No mecanico record exist for given id");
-//        }
-//    }
+
+    public void deletePecaById(Integer id) throws RecordNotFoundException {
+        Optional<Pecas> peca = repository.findById(id);
+
+        if (peca.isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new RecordNotFoundException("No peca record exist for given id");
+        }
+    }
 }
