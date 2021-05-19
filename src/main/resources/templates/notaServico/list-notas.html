@@ -14,11 +14,18 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/container.css">
+        <link rel="stylesheet" href="css/nfe.css">
     </head>
     <body>
-        <div class="peca container" layout:fragment="content">
-             <br> <br> <br> <br> <br>
+        <div class="nfe container" layout:fragment="content"> 
+                       
+            <div class="divBt-nfe">
+                <a href="/edit" class="btn btn-dark btn-lg divBt">
+                    Add NFe</a>
+            </div>
             
+            <h2 class="h2-nfe">List of Mechanics</h2>
+
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
                     <tr>
@@ -39,7 +46,7 @@ and open the template in the editor.
                         <td th:text="${notaServico.km}">km</td>
                 </tbody>
             </table>
-               
+
         </div>
     </body>
 </html>

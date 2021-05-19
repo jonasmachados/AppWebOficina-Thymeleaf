@@ -1,45 +1,40 @@
 .peca{
-    padding-bottom: 4em
+    padding-bottom: 4em;
 }
 .divBt-peca{
     padding-top: 5em;
 }
-h2-peca{
-    font-size: 1.5em;
-    padding-left: 40%;
-    padding-top: 3em;
-    padding-bottom: 1em;
-    color: #696969;
-}
-.divBt-peca{
-    padding-bottom: 2em;
-}
 .thTable{
+    color: white;
     background-color: #696969;
+}
+.h2-peca{
+    font-size: 1.5em;
+    padding-left: 50%;
+    padding-top: 1em;
+    padding-bottom: .5em;
+    color: #696969;
 }
 .box-Principal-Peca{
     display: grid;
     justify-content: center;
     align-items: center;
-    padding-top: 5em;
+    padding-top: 3em;
 }
 .boxLoginPeca{
     border-top:solid .1em;
     border-bottom:solid .1em;
     border-color: #696969;
-    height: 20em;
+    height: 40em;
     width: 100%;
 }
 .h3-peca{
-    padding-top: 1em;
+    padding-top: 2em;
     padding-bottom: 1em;
     size: 1em;
     text-align: center;
     color: #696969;
-}
-.bt-subimit{
-    margin-top: 2em;
-    padding-left: 5%;
+
 }
 .form-peca{
     height: 3em;
@@ -52,6 +47,18 @@ h2-peca{
     padding-left: 5%; 
     font-size: 1em;
 }
+.btn{
+    background-color: #696969;
+    color: #FFFFFF;
+}
+.divBottom{
+    height: 5em;
+}
+.bt-subimit{
+    margin-top: 2em;
+    padding-left: 5%;
+}
+
 
 @media(max-width:800px){
     .box-Principal-Peca{

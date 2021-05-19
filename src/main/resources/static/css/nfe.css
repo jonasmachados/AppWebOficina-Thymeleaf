@@ -1,45 +1,41 @@
-.mecanico{
+.nfe{
     padding-bottom: 4em;
 }
-.h2-mecanico{
+.divBt-nfe{
+    padding-top: 5em;
+}
+.thTable{
+    background-color: #696969;
+}
+.h2-nfe{
     font-size: 1.5em;
     padding-left: 40%;
     padding-top: 1em;
     padding-bottom: .6em;
     color: #696969;
 }
-.divBt-mecanico{
-    padding-top: 5em;
-}
-.thTable{
-    color: white;
-    background-color: #696969;
-}
-.box-Principal-Mecanico{
+.box-Principal-Carro{
     display: grid;
     justify-content: center;
     align-items: center;
     padding-top: 3em;
 }
-.boxLoginMecanico{
+.boxLoginBook{
     border-top:solid .1em;
     border-bottom:solid .1em;
     border-color: #696969;
-    height: 50em;
+    height: 40em;
     width: 100%;
 }
-.h3-mecanico{
-    padding-top: 1em;
+.h3-car{
+    padding-top: 2em;
     padding-bottom: 1em;
     size: 1em;
     text-align: center;
     color: #696969;
+
 }
-.bt-subimit{
-    margin-top: 2em;
-    padding-left: 5%;
-}
-.form-mecanico{
+.form-car{
     height: 3em;
     width: 30em;
     margin-top: 1em;
@@ -54,17 +50,31 @@
     background-color: #696969;
     color: #FFFFFF;
 }
+.divBottom{
+    height: 5em;
+}
+.bt-subimit{
+    margin-top: 2em;
+    padding-left: 5%;
+}
 
 @media(max-width:800px){
     .box-Principal-Carro{
         padding-top: 0;
     }
-    .bt-subimit{
-        margin-top: 1em;
+    .th-car{
+        display:none;
     }
-    .form-mecanico{
+    .boxLoginCar{
+        width: 20em;
+        height: 26em;
+    }
+    .form-car{
         width: 20em;
 
+    }
+    .bt-subimit{
+        margin-top: 1em;
     }
 }
 
