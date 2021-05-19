@@ -2,17 +2,18 @@ package com.jonas.model.service;
 
 import com.jonas.model.domain.Carro;
 import com.jonas.model.domain.Mecanico;
+import com.jonas.model.domain.NotaServico;
 import com.jonas.model.domain.Pecas;
 import com.jonas.model.domain.Servico;
 import com.jonas.repository.CarroRepository;
 import com.jonas.repository.MecanicoRepository;
 import com.jonas.repository.PecaRepository;
-import com.jonas.repository.ServicoRepository;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.TimeZone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.jonas.repository.NotaServicoRepository;
 
 /**
  *
@@ -36,7 +37,7 @@ public class DBService {
 
     //Summon class Repository for add H2
     @Autowired
-    private ServicoRepository servicoRepository;
+    private NotaServicoRepository servicoRepository;
 
     public void instanciaBaseDeDados()throws Exception {
         //Format of date
@@ -53,16 +54,16 @@ public class DBService {
         Pecas p3 = new Pecas(null, "FUZIVEL", sdf.parse("25/02/2021"), 40.0);
         Pecas p4 = new Pecas(null, "BATERIA", sdf.parse("25/02/2021"), 125.0);
 
-        Servico s1 = new Servico(null, "Troca retrovisor", 120.0, sdf.parse("23/02/2021"), 90000.0, m1, c1);
-        Servico s2 = new Servico(null, "TROCA FUZIL", 40.0, sdf.parse("25/02/2021"), 90005.0, m2, c1);
-        Servico s3 = new Servico(null, "TROCA BATERIA", 125.0, sdf.parse("23/02/2021"), 90005.0, m2, c1);
+        NotaServico nfe1 = new NotaServico(null, "Troca retrovisor", 120.0, sdf.parse("23/02/2021"), 90000.0, m1, c1);
+        NotaServico nfe2 = new NotaServico(null, "TROCA FUZIL", 40.0, sdf.parse("25/02/2021"), 90005.0, m2, c1);
+        NotaServico nfe3 = new NotaServico(null, "TROCA BATERIA", 125.0, sdf.parse("23/02/2021"), 90005.0, m2, c1);
 
-        s1.getPecas().addAll(Arrays.asList(p1, p2));
+        nfe1.getPecas().addAll(Arrays.asList(p1, p2));
 
         this.carroRepository.saveAll(Arrays.asList(c1));
         this.mecanicoRepository.saveAll(Arrays.asList(m1, m2));
         this.pecaRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
-        this.servicoRepository.saveAll(Arrays.asList(s1, s2, s3));
+        this.servicoRepository.saveAll(Arrays.asList(nfe1, nfe2, nfe3));
     }
 
 }

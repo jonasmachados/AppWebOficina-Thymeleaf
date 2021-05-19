@@ -40,7 +40,7 @@ public class Mecanico implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "mecanico") //Anotacao para associacao
-    private List<Servico> servicos = new ArrayList<>();
+    private List<NotaServico> notasServico = new ArrayList<>();
 
     //CONSTRUCTOR
     public Mecanico() {
@@ -176,12 +176,12 @@ public class Mecanico implements Serializable {
         this.dataCriacao = dataCriacao;
     }
 
-    public List<Servico> getServicos() {
-        return servicos;
+    public List<NotaServico> getNotaServico() {
+        return notasServico;
     }
 
-    public void setServicos(List<Servico> servicos) {
-        this.servicos = servicos;
+    public void setNotaServico(List<NotaServico> notaServico) {
+        this.notasServico = notaServico;
     }
 
 }

@@ -17,9 +17,29 @@ and open the template in the editor.
     </head>
     <body>
         <div class="peca container" layout:fragment="content">
+             <br> <br> <br> <br> <br>
             
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="thTable">Id</th>
+                        <th class="thTable">Descricao</th>
+                        <th class="thTable">Preço</th>
+                        <th class="thTable">Data de Servico</th>
+                        <th class="thTable">KM</th>
 
-
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="notaServico : ${notasServico}">
+                        <td th:text="${notaServico.id}">id</td>
+                        <td th:text="${notaServico.descricao}">descricao</td>
+                        <td th:text="${notaServico.preco}">id</td>
+                        <td th:text="${#dates.format(notaServico.dataServico, 'dd-MMM-yyyy')}">id</td>
+                        <td th:text="${notaServico.km}">km</td>
+                </tbody>
+            </table>
+               
         </div>
     </body>
 </html>
