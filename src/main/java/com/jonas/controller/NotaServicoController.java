@@ -4,11 +4,16 @@ package com.jonas.controller;
 import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.NotaServico;
 import com.jonas.model.service.NotaServicoService;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,4 +54,10 @@ public class NotaServicoController {
         service.createOrUpdateNFe(nfe);
         return "redirect:/notasServico"; //REDIRECT: back to previous HTML.
     }
+    
+    //Handling conversor string to a data 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("MM/dd/yyyy"), true));
+}
 }
