@@ -2,6 +2,7 @@ package com.jonas.model.service;
 
 import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.NotaServico;
+import com.jonas.model.domain.Servico;
 import com.jonas.repository.NotaServicoRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +60,16 @@ public class NotaServicoService {
 
         if (nfe.isPresent()) {
             return nfe.get();
+        } else {
+            throw new RecordNotFoundException("No nfe record exist for given id");
+        }
+    }
+    
+     public void deleteNFeById(Integer id) throws RecordNotFoundException {
+        Optional<NotaServico> nfe = repository.findById(id);
+
+        if (nfe.isPresent()) {
+            repository.deleteById(id);
         } else {
             throw new RecordNotFoundException("No nfe record exist for given id");
         }

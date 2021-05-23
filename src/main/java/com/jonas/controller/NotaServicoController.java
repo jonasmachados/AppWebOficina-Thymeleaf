@@ -55,6 +55,13 @@ public class NotaServicoController {
         return "redirect:/notasServico"; //REDIRECT: back to previous HTML.
     }
     
+    @RequestMapping(path = "/deleteNFe/{id}")
+    public String deleteNFeById(Model model, @PathVariable("id") Integer id)
+            throws RecordNotFoundException {
+        service.deleteNFeById(id);
+        return "redirect:/notasServico";
+    }
+    
     //Handling conversor string to a data 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
