@@ -6,6 +6,7 @@
 }
 .thTable{
     background-color: #696969;
+    color: white;
 }
 .h2-nfe{
     font-size: 1.5em;
@@ -14,20 +15,20 @@
     padding-bottom: .6em;
     color: #696969;
 }
-.box-Principal-Carro{
+.box-Principal-Nfe{
     display: grid;
     justify-content: center;
     align-items: center;
-    padding-top: 3em;
+    padding-top: 4em;
 }
-.boxLoginBook{
+.boxLoginNFe{
     border-top:solid .1em;
     border-bottom:solid .1em;
     border-color: #696969;
-    height: 40em;
+    height: 25em;
     width: 100%;
 }
-.h3-car{
+.h3-nfe{
     padding-top: 2em;
     padding-bottom: 1em;
     size: 1em;
@@ -35,7 +36,7 @@
     color: #696969;
 
 }
-.form-car{
+.form-nfe{
     height: 3em;
     width: 30em;
     margin-top: 1em;
@@ -59,17 +60,17 @@
 }
 
 @media(max-width:800px){
-    .box-Principal-Carro{
+    .box-Principal-NFe{
         padding-top: 0;
     }
-    .th-car{
+    .th-nfe{
         display:none;
     }
-    .boxLoginCar{
+    .boxLoginNFe{
         width: 20em;
         height: 26em;
     }
-    .form-car{
+    .form-nfe{
         width: 20em;
 
     }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AppWeb Oficina</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+        <!--CSS-->
+        <link rel="stylesheet" href="css/nfe/nfe.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/footerNew.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/container.css">
+
+    </head>
+
+    <body>
+        <div class="nfe" layout:fragment="content">
+            <div class="box-Principal-Nfe">
+                <h3 class="h3-nfe"> Register a NFe</h3>
+
+                <div class="boxLoginNFe">
+                    <form action="#" th:action="@{/createNFe}" th:object="${nfe}" method="post">
+
+                        <div>
+                            <label for="Descricao"></label> 
+                            <input type="text" th:field="*{descricao}" class="form-nfe" id="descricao" placeholder="Descricao" />
+                        </div>   
+                        <label for="Descricao"></label> 
+                        <input type="text" th:field="*{preco}" class="form-nfe" id="preco" placeholder="Preço" />
+                        <div>  
+                            <label for="dataServico"></label> 
+                            <input type="text" th:field="*{dataServico}" class="form-nfe" id="dataServico" placeholder="Data da Compra" />
+                        </div> 
+                        <div>
+                            <label for="km"></label> 
+                            <input type="text" th:field="*{km}" class="form-nfe" id="km" placeholder="KM" />
+                        </div>
+
+
+                        <div class="bt-subimit">
+                            <input type="submit" class="btn btn-dark btn-lg" value=" Submit ">
+                        </div>
+
+                        <input type="hidden" id="id" th:field="*{id}">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

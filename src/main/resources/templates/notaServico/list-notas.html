@@ -19,13 +19,13 @@ and open the template in the editor.
     </head>
     <body>
         <div class="nfe container" layout:fragment="content"> 
-                       
+
             <div class="divBt-nfe">
-                <a href="/edit" class="btn btn-dark btn-lg divBt">
+                <a href="/editNFe" class="btn btn-dark btn-lg divBt">
                     Add NFe</a>
             </div>
-            
-            <h2 class="h2-nfe">List of Mechanics</h2>
+
+            <h2 class="h2-nfe">List of NFe</h2>
 
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
@@ -39,12 +39,17 @@ and open the template in the editor.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="notaServico : ${notasServico}">
-                        <td th:text="${notaServico.id}">id</td>
-                        <td th:text="${notaServico.descricao}">descricao</td>
-                        <td th:text="${notaServico.preco}">id</td>
-                        <td th:text="${#dates.format(notaServico.dataServico, 'dd-MMM-yyyy')}">id</td>
-                        <td th:text="${notaServico.km}">km</td>
+                    <tr th:each="nfe : ${nfe}">
+                        <td th:text="${nfe.id}">id</td>
+                        <td th:text="${nfe.descricao}">descricao</td>
+                        <td th:text="${nfe.preco}">id</td>
+                        <td th:text="${#dates.format(nfe.dataServico, 'dd-MMM-yyyy')}">id</td>
+                        <td th:text="${nfe.km}">km</td>
+                        <td>
+                            <a th:href="@{/editNFe{id}(id=${nfe.id})}" class="btn btn-dark">
+                                <i class="fas fa-user-edit ml-2"></i>
+                            </a>
+                        </td>
                 </tbody>
             </table>
 
