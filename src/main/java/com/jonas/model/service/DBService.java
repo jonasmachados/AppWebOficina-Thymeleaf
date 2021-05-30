@@ -4,7 +4,6 @@ import com.jonas.model.domain.Carro;
 import com.jonas.model.domain.Mecanico;
 import com.jonas.model.domain.NotaServico;
 import com.jonas.model.domain.Pecas;
-import com.jonas.model.domain.Servico;
 import com.jonas.repository.CarroRepository;
 import com.jonas.repository.MecanicoRepository;
 import com.jonas.repository.PecaRepository;

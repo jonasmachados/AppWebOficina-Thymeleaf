@@ -2,7 +2,6 @@ package com.jonas.model.service;
 
 import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.NotaServico;
-import com.jonas.model.domain.Servico;
 import com.jonas.repository.NotaServicoRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +42,7 @@ public class NotaServicoService {
                 newNFe.setPreco(entity.getPreco());
                 newNFe.setDataServico(entity.getDataServico());
                 newNFe.setKm(entity.getKm());
+                newNFe.setMecanico(entity.getMecanico());
 
                 newNFe = repository.save(newNFe);
 

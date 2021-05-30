@@ -87,6 +87,12 @@ public class NotaServico implements Serializable {
         return true;
     }
 
+    //TOSTRING
+    @Override    
+    public String toString() {
+        return "NotaServico{" + "id=" + id + ", descricao=" + descricao + ", preco=" + preco + ", dataServico=" + dataServico + ", km=" + km + ", mecanico=" + mecanico + ", carro=" + carro + ", pecas=" + pecas + '}';
+    }
+
     //GET AND SET
     public Integer getId() {
         return id;

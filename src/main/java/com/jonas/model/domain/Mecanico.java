@@ -1,3 +1,4 @@
+
 package com.jonas.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -87,6 +88,11 @@ public class Mecanico implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Mecanico{" + "id=" + id + ", razaoSocial=" + razaoSocial + ", cpf_Cnpj=" + cpf_Cnpj + ", cep=" + cep + ", endereco=" + endereco + ", numero=" + numero + ", bairro=" + bairro + ", cidade=" + cidade + ", telefone=" + telefone + ", adicionais=" + adicionais + ", dataCriacao=" + dataCriacao + ", notasServico=" + notasServico + '}';
+    }
+   
     //GET AND SET
     public Integer getId() {
         return id;
