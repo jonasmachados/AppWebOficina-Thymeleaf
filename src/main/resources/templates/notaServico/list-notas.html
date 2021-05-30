@@ -35,6 +35,8 @@ and open the template in the editor.
                         <th class="thTable">Preço</th>
                         <th class="thTable">Data de Servico</th>
                         <th class="thTable">KM</th>
+                        <th class="thTable">Mecanico</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +46,7 @@ and open the template in the editor.
                         <td th:text="${nfe.preco}">id</td>
                         <td th:text="${#dates.format(nfe.dataServico, 'dd-MMM-yyyy')}">id</td>
                         <td th:text="${nfe.km}">km</td>
+                        <td th:text="${nfe.mecanico.razaoSocial}">km</td>
                         <td>
                             <a th:href="@{/editNFe{id}(id=${nfe.id})}" class="btn btn-dark">
                                 <i class="fas fa-user-edit ml-2"></i>
