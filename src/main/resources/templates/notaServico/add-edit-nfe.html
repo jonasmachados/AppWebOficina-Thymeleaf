@@ -38,11 +38,14 @@
                             <input type="text" th:field="*{km}" class="form-nfe" id="km" placeholder="KM" />
                         </div>
 
-                        <td>Select Mechanic</td>
-                        <select th:field="*{mecanico}">
-                            <option th:each="mecanico : ${mecanicoList}"
-                                    th:value="${mecanico.razaoSocial}" th:text="${mecanico.razaoSocial}"></option>
-                        </select>
+                        <div>
+                            <p class="p-select"> Select a Mechanic:</p>
+                            <select class="select" th:field="*{mecanico}">
+                                <option th:each="mecanico : ${mecanicoList}"
+                                        th:value="${mecanico.razaoSocial}" th:text="${mecanico.razaoSocial}"></option>
+                            </select>
+                        </div>
+
 
                         <div class="bt-subimit">
                             <input type="submit" class="btn btn-dark btn-lg" value=" Submit ">
