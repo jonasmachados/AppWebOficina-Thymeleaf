@@ -42,7 +42,7 @@
                             <p class="p-select"> Select a Mechanic:</p>
                             <select class="select" th:field="*{mecanico}">
                                 <option th:each="mecanico : ${mecanicoList}"
-                                        th:value="${mecanico.razaoSocial}" th:text="${mecanico.razaoSocial}"></option>
+                                        th:value="${mecanico.id}" th:text="${mecanico.razaoSocial}"></option>
                             </select>
                         </div>
 
