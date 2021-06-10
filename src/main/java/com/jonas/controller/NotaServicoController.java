@@ -3,7 +3,6 @@ package com.jonas.controller;
 import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.Mecanico;
 import com.jonas.model.domain.NotaServico;
-import com.jonas.model.service.MecanicoService;
 import com.jonas.model.service.NotaServicoService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,35 +29,36 @@ public class NotaServicoController {
     @Autowired
     private NotaServicoService service;
 
-    @Autowired
-    private MecanicoService mecanicoservice;
-
     @RequestMapping(value = "/notasServico")
     public String findAllNotasServico(Model model) {
         List<NotaServico> list = service.findAllNotasServico();
-        model.addAttribute("nfe", list);
+        model.addAttribute("notasServico", list);
         return "notaServico/list-notas";
     }
 
     @RequestMapping(path = {"/editNFe", "/editNFe{id}"})
-    public String editNFeById(Model model, @PathVariable("id") Optional<Integer> id)
+    public String editNotaServicoById(Model model, @PathVariable("id") Optional<Integer> id)
             throws RecordNotFoundException {
-        if (id.isPresent()) {
-            NotaServico entity = service.getNotaServicoById(id.get());
-            List<Mecanico> mecanicoList = mecanicoservice.findAllMecanicos();
-            model.addAttribute("mecanicoList", mecanicoList);
-            model.addAttribute("nfe", entity);
+        if (id.isEmpty()) {
+
+            model.addAttribute("notaServico", new NotaServico());
+
+            List<Mecanico> listMecanico = service.findAllMecanico();
+            model.addAttribute("listMecanico", listMecanico);
+
         } else {
-            List<Mecanico> mecanicoList = mecanicoservice.findAllMecanicos();
-            model.addAttribute("mecanicoList", mecanicoList);
-            model.addAttribute("nfe", new NotaServico());
+            NotaServico entity = service.getNotaServicoById(id.get());
+            model.addAttribute("notaServico", entity);
+
+            List<Mecanico> listMecanico = service.findAllMecanico();
+            model.addAttribute("listMecanico", listMecanico);
         }
         return "notaServico/add-edit-nfe";
     }
 
     @RequestMapping(path = "/createNFe", method = RequestMethod.POST)
-    public String createOrUpdateNFe(NotaServico nfe) {
-        service.createOrUpdateNFe(nfe);
+    public String createOrUpdateNotaServico(NotaServico notaServico) {
+        service.createOrUpdateNotaServico(notaServico);
         return "redirect:/notasServico"; //REDIRECT: back to previous HTML.
     }
 

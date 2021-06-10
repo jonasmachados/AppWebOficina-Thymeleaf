@@ -40,20 +40,20 @@ and open the template in the editor.
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="nfe : ${nfe}">
-                        <td th:text="${nfe.id}">id</td>
-                        <td th:text="${nfe.descricao}">descricao</td>
-                        <td th:text="${nfe.preco}">id</td>
-                        <td th:text="${#dates.format(nfe.dataServico, 'dd-MMM-yyyy')}">id</td>
-                        <td th:text="${nfe.km}">km</td>
-                        <td th:text="${nfe.mecanico.razaoSocial}">km</td>
+                    <tr th:each="notaServico : ${notasServico}">
+                        <td th:text="${notaServico.id}">id</td>
+                        <td th:text="${notaServico.descricao}">descricao</td>
+                        <td th:text="${notaServico.preco}">id</td>
+                        <td th:text="${#dates.format(notaServico.dataServico, 'dd-MMM-yyyy')}">id</td>
+                        <td th:text="${notaServico.km}">km</td>
+                        <td th:text="${notaServico.mecanico.razaoSocial}">km</td>
                         <td>
-                            <a th:href="@{/editNFe{id}(id=${nfe.id})}" class="btn btn-dark">
+                            <a th:href="@{/editNFe{id}(id=${notaServico.id})}" class="btn btn-dark">
                                 <i class="fas fa-user-edit ml-2"></i>
                             </a>
                         </td>
                         <td>
-                            <a th:href="@{/deleteNFe/{id}(id=${nfe.id})}" class="btn btn-dark">
+                            <a th:href="@{/deleteNFe/{id}(id=${notaServico.id})}" class="btn btn-dark">
                                 <i class="fas fa-user-times ml-2"></i>
                             </a>
                         </td>

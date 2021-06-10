@@ -21,7 +21,7 @@
                 <h3 class="h3-nfe"> Register a NFe</h3>
 
                 <div class="boxLoginNFe">
-                    <form action="#" th:action="@{/createNFe}" th:object="${nfe}" method="post">
+                    <form action="#" th:action="@{/createNFe}" th:object="${notaServico}" method="post">
 
                         <div>
                             <label for="Descricao"></label> 
@@ -41,7 +41,7 @@
                         <div>
                             <p class="p-select"> Select a Mechanic:</p>
                             <select class="select" th:field="*{mecanico}">
-                                <option th:each="mecanico : ${mecanicoList}"
+                                <option th:each="mecanico : ${listMecanico}"
                                         th:value="${mecanico.id}" th:text="${mecanico.razaoSocial}"></option>
                             </select>
                         </div>

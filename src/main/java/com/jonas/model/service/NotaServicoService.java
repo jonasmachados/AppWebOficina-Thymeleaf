@@ -9,44 +9,71 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jonas.model.domain.Mecanico;
+import com.jonas.repository.MecanicoRepository;
+
 /**
  *
  * @author Jonas
  */
 @Service
 public class NotaServicoService {
-    
-    
+
     @Autowired
     private NotaServicoRepository repository;
-    
+
+    @Autowired
+    private MecanicoRepository mecanicoRepository;
+
     public List<NotaServico> findAllNotasServico() {
         List<NotaServico> result = (List<NotaServico>) repository.findAll();
+
         if (result.size() > 0) {
             return result;
         } else {
             return new ArrayList<NotaServico>();
         }
     }
-    
-    public NotaServico createOrUpdateNFe(NotaServico entity) {
+
+    public List<Mecanico> findAllMecanico() {
+        List<Mecanico> result = (List<Mecanico>) mecanicoRepository.findAll();
+
+        if (result.size() > 0) {
+            return result;
+        } else {
+            return new ArrayList<Mecanico>();
+        }
+    }
+
+    public NotaServico getNotaServicoById(Integer id) throws RecordNotFoundException {
+        Optional<NotaServico> notaServico = repository.findById(id);
+
+        if (notaServico.isPresent()) {
+            return notaServico.get();
+        } else {
+            throw new RecordNotFoundException("No NFe record exist for given id");
+        }
+    }
+
+    public NotaServico createOrUpdateNotaServico(NotaServico entity) {
         if (entity.getId() == null) {
             entity = repository.save(entity);
+
             return entity;
         } else {
-            Optional<NotaServico> nfe = repository.findById(entity.getId());
+            Optional<NotaServico> notaServico = repository.findById(entity.getId());
 
-            if (nfe.isPresent()) {
-                NotaServico newNFe = nfe.get();
-                newNFe.setDescricao(entity.getDescricao());
-                newNFe.setPreco(entity.getPreco());
-                newNFe.setDataServico(entity.getDataServico());
-                newNFe.setKm(entity.getKm());
-                newNFe.setMecanico(entity.getMecanico());
+            if (notaServico.isPresent()) {
+                NotaServico newNotaServico = notaServico.get();
+                newNotaServico.setDescricao(entity.getDescricao());
+                newNotaServico.setPreco(entity.getPreco());
+                newNotaServico.setDataServico(entity.getDataServico());
+                newNotaServico.setKm(entity.getKm());
+                newNotaServico.setMecanico(entity.getMecanico());
 
-                newNFe = repository.save(newNFe);
+                newNotaServico = repository.save(newNotaServico);
 
-                return newNFe;
+                return newNotaServico;
             } else {
                 entity = repository.save(entity);
 
@@ -55,17 +82,7 @@ public class NotaServicoService {
         }
     }
 
-    public NotaServico getNotaServicoById(Integer id) throws RecordNotFoundException {
-        Optional<NotaServico> nfe = repository.findById(id);
-
-        if (nfe.isPresent()) {
-            return nfe.get();
-        } else {
-            throw new RecordNotFoundException("No nfe record exist for given id");
-        }
-    }
-    
-     public void deleteNFeById(Integer id) throws RecordNotFoundException {
+    public void deleteNFeById(Integer id) throws RecordNotFoundException {
         Optional<NotaServico> nfe = repository.findById(id);
 
         if (nfe.isPresent()) {
