@@ -46,13 +46,17 @@ public class NotaServicoController {
 
             List<Mecanico> listMecanico = service.findAllMecanico();
             model.addAttribute("listMecanico", listMecanico);
-            
+
             List<Carro> listCarro = service.findAllCarros();
             model.addAttribute("listCarro", listCarro);
 
         } else {
             NotaServico entity = service.getNotaServicoById(id.get());
             model.addAttribute("notaServico", entity);
+
+            List<Mecanico> listMecanico = service.findAllMecanico();
+            model.addAttribute("listMecanico", listMecanico);
+
             List<Carro> listCarro = service.findAllCarros();
             model.addAttribute("listCarro", listCarro);
         }
