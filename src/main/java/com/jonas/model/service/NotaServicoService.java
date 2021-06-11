@@ -1,6 +1,7 @@
 package com.jonas.model.service;
 
 import com.jonas.exception.RecordNotFoundException;
+import com.jonas.model.domain.Carro;
 import com.jonas.model.domain.NotaServico;
 import com.jonas.repository.NotaServicoRepository;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jonas.model.domain.Mecanico;
+import com.jonas.repository.CarroRepository;
 import com.jonas.repository.MecanicoRepository;
 
 /**
@@ -24,6 +26,9 @@ public class NotaServicoService {
 
     @Autowired
     private MecanicoRepository mecanicoRepository;
+    
+    @Autowired
+    private CarroRepository carroRepository;
 
     public List<NotaServico> findAllNotasServico() {
         List<NotaServico> result = (List<NotaServico>) repository.findAll();
@@ -45,6 +50,16 @@ public class NotaServicoService {
         }
     }
 
+     public List<Carro> findAllCarros() {
+        List<Carro> result = (List<Carro>) carroRepository.findAll();
+
+        if (result.size() > 0) {
+            return result;
+        } else {
+            return new ArrayList<Carro>();
+        }
+    }
+     
     public NotaServico getNotaServicoById(Integer id) throws RecordNotFoundException {
         Optional<NotaServico> notaServico = repository.findById(id);
 

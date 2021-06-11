@@ -1,6 +1,7 @@
 package com.jonas.controller;
 
 import com.jonas.exception.RecordNotFoundException;
+import com.jonas.model.domain.Carro;
 import com.jonas.model.domain.Mecanico;
 import com.jonas.model.domain.NotaServico;
 import com.jonas.model.service.NotaServicoService;
@@ -45,13 +46,15 @@ public class NotaServicoController {
 
             List<Mecanico> listMecanico = service.findAllMecanico();
             model.addAttribute("listMecanico", listMecanico);
+            
+            List<Carro> listCarro = service.findAllCarros();
+            model.addAttribute("listCarro", listCarro);
 
         } else {
             NotaServico entity = service.getNotaServicoById(id.get());
             model.addAttribute("notaServico", entity);
-
-            List<Mecanico> listMecanico = service.findAllMecanico();
-            model.addAttribute("listMecanico", listMecanico);
+            List<Carro> listCarro = service.findAllCarros();
+            model.addAttribute("listCarro", listCarro);
         }
         return "notaServico/add-edit-nfe";
     }
