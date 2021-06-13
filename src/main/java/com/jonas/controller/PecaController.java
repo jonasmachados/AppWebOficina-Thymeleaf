@@ -59,6 +59,14 @@ public class PecaController {
         service.deletePecaById(id);
         return "redirect:/pecas";
     }
+    
+    
+    @RequestMapping(value = "/relatorioPecas")
+    public String relatorioPecas(Model model) {
+        List<Pecas> list = service.findAllPecas();
+        model.addAttribute("relatorioPecas", list);
+        return "peca/relatorios/HTML-list-pecas";
+    }
     //Handling conversor string to a data 
     @InitBinder
     public void initBinder(WebDataBinder binder) {

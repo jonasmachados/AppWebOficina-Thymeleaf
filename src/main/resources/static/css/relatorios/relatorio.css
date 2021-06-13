@@ -1,0 +1,27 @@
+.h1-relatorio{
+    text-align: center;
+    padding-top: .5em;
+    font-size: 1.5em;
+    height: .5em;
+}
+.h2-relatorio{
+    text-align: center;
+    font-size: 1.2em;
+}
+.table-relatorio{
+    border-collapse: collapse;
+ margin: auto;
+}
+th{
+    border: .5px solid black;
+     background-color:#8FBC8F;
+     height: 1.5em; 
+     padding-right: 5em;
+}
+.th-id{
+   padding-right: 2em;
+}
+td{
+    border: .5px solid black;
+    height: 1.5em;
+}
