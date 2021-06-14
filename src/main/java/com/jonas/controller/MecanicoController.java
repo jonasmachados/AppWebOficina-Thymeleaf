@@ -59,6 +59,14 @@ public class MecanicoController {
         service.deleteMecanicoById(id);
         return "redirect:/mecanicos";
     }
+    
+    //Method to display report of Mechanic
+    @RequestMapping(value = "/relatorioMecanicos")
+    public String relatorioMecanicos(Model model) {
+        List<Mecanico> list = service.findAllMecanicos();
+        model.addAttribute("relatorioMecanicos", list);
+        return "peca/relatorios/HTML-list-mecanicos";
+    }
 
     //Handling conversor string to a data 
     @InitBinder

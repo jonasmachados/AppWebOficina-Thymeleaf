@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>AppWeb Oficina</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--CSS-->
+
+        <link rel="stylesheet" href="css/relatorios/relatorio.css">
+    </head>
+    <body>
+        <div class="peca container" layout:fragment="content">
+            <h1 class="h1-relatorio">APP WEB OFICINA</h1>
+            <h2 class="h2-relatorio">Relatório de Mecanicos</h2>
+
+            <table class="table-relatorio">
+                <thead class"td-relatorio">
+                    <tr>
+                        <th class="th-id">Id</th>
+                        <th class="th-table">Razao Social</th>
+                        <th class="th-table">CPF/CNPJ</th>                        
+                        <th class="th-table">CEP</th>                            
+                        <th class="th-table">Endereco</th>
+                        <th class="th-table">Numero</th>
+                        <th class="th-table">Bairro</th>                        
+                        <th class="th-table">Cidade</th>                         
+                        <th class="th-table">Telefone</th>
+                        <th class="th-table">Data de Criacao</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each=" mecanico : ${relatorioMecanicos}">
+                        <td th:text="${mecanico.id}">id</td>
+                        <td th:text="${mecanico.razaoSocial}">Razao Social</td>                       
+                        <td th:text="${mecanico.cpf_Cnpj}">id</td>
+                        <td th:text="${mecanico.cep}">Descricao</td>                       
+                        <td th:text="${mecanico.endereco}">id</td>
+                        <td th:text="${mecanico.numero}">Descricao</td>                      
+                        <td th:text="${mecanico.bairro}">id</td>
+                        <td th:text="${mecanico.cidade}">Descricao</td>
+                        <td th:text="${mecanico.telefone}">id</td>
+                        <td th:text="${#dates.format(mecanico.dataCriacao, 'dd-MMM-yyyy')}"></td>
+                </tbody>
+            </table>
+
+        </div>
+
+    </body>
+</html>
