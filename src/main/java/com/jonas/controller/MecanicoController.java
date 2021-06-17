@@ -2,16 +2,22 @@ package com.jonas.controller;
 
 import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.Mecanico;
+import com.jonas.model.domain.MecanicoPDFExporter;
 import com.jonas.model.service.MecanicoService;
+import com.lowagie.text.DocumentException;
+import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,13 +65,30 @@ public class MecanicoController {
         service.deleteMecanicoById(id);
         return "redirect:/mecanicos";
     }
-    
+
     //Method to display report of Mechanic
-    @RequestMapping(value = "/relatorioMecanicos")
-    public String relatorioMecanicos(Model model) {
-        List<Mecanico> list = service.findAllMecanicos();
-        model.addAttribute("relatorioMecanicos", list);
-        return "peca/relatorios/HTML-list-mecanicos";
+//    @RequestMapping(value = "/relatorioMecanicos")
+//    public String relatorioMecanicos(Model model) {
+//        List<Mecanico> list = service.findAllMecanicos();
+//        model.addAttribute("relatorioMecanicos", list);
+//        return "peca/relatorios/HTML-list-mecanicos";
+//    }
+    @GetMapping("/relatorioMecanicos")
+    public void relatorioMecanicostoPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+//        String headerValue = "attachment; filename=mecanicos_" + currentDateTime + ".pdf";
+        String headerValue = "attachment; filename=mecanicos_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<Mecanico> listMecanicos = service.findAllMecanicos();
+
+        MecanicoPDFExporter exporter = new MecanicoPDFExporter(listMecanicos);
+        exporter.export(response);
+
     }
 
     //Handling conversor string to a data 

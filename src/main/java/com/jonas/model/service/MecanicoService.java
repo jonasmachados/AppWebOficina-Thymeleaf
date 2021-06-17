@@ -78,4 +78,7 @@ public class MecanicoService {
             throw new RecordNotFoundException("No mecanico record exist for given id");
         }
     }
+
+    
+
 }
