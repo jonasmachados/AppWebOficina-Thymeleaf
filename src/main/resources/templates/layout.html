@@ -42,36 +42,14 @@
                     </ul>
                 </li>
 
-                <!--                <ul class="menu clearfix">-->
-                <li><a href="#">Relato</a>
-                    <!-- Nível 1 -->
-                    <!-- submenu -->
-                    <ul class="sub-menu">
-                        <li><a href="#">Carros</a>
-                            <!-- Nível 2 -->
-                            <!-- submenu do submenu -->
-                            <ul class="sub-menu">
-                                <li><a href="#">Carros PDF</a></li>
-                                <li><a href="#">Carros HTML</a></li>
-                            </ul><!-- submenu do submenu -->
-                        </li>
-
-                    </ul>
-
-
-                </li>
-
-
-
-
                 <li>
                     <a href="#">Relatorios</a>
 
                     <ul class="sub-menu">
-<!--REPORT OF PARTS-->
+                    <!--REPORT OF PARTS-->
                         <li><a href="#">Peças</a>
                             <ul class="sub-menu">
-                                <li><a href="#">Pecas PDF</a></li>
+                                <li><a th:href="@{/relatorioPecasPDF}">Pecas PDF</a></li>
                                  <li><a th:href="@{/relatorioPecas}">Pecas HTML</a></li>
                             </ul>
                         </li>
