@@ -48,8 +48,7 @@ public class PecaPDFExporter {
             table.addCell(String.valueOf(pecas.getId()));
             table.addCell(pecas.getDescricao());
             table.addCell(String.valueOf(pecas.getDataCompra()));
-             table.addCell(String.valueOf(pecas.getPreco()));
-                  
+            table.addCell(String.valueOf(pecas.getPreco()));
         }
     }
 
@@ -61,16 +60,16 @@ public class PecaPDFExporter {
         PdfWriter.getInstance(document, response.getOutputStream());
 
         document.open();
-        
+
         //Font of H1(p1)
         Font fontP1 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         fontP1.setSize(18);
         fontP1.setColor(Color.BLACK);
-        
+
         Font fontP2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         fontP2.setSize(14);
         fontP2.setColor(Color.BLACK);
-        
+
         Paragraph p = new Paragraph("APP WEB OFICINA", fontP1);
         p.setAlignment(Paragraph.ALIGN_CENTER);
         p.setLeading(0);
