@@ -10,16 +10,16 @@
 }
 .table-relatorio{
     border-collapse: collapse;
- margin: auto;
+    margin: auto;
 }
 th{
     border: .5px solid black;
-     background-color:#8FBC8F;
-     height: 1.5em; 
-     padding-right: 5em;
+    background-color:#8FBC8F;
+    height: 1.5em; 
+    padding-right: 5em;
 }
 .th-id{
-   padding-right: 2em;
+    padding-right: 2em;
 }
 td{
     border: .5px solid black;

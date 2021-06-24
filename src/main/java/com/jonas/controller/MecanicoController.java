@@ -65,6 +65,13 @@ public class MecanicoController {
         service.deleteMecanicoById(id);
         return "redirect:/mecanicos";
     }
+    
+    @RequestMapping(value = "/relatorioMecanicosHTML")
+    public String relatorioPecas(Model model) {
+        List<Mecanico> list = service.findAllMecanicos();
+        model.addAttribute("relatorioMecanicosHTML", list);
+        return "peca/relatorios/HTML-list-mecanicos";
+    }
 
     @GetMapping("/relatorioMecanicosPDF")
     public void relatorioMecanicostoPDF(HttpServletResponse response) throws DocumentException, IOException {

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/relatorios/relatorio.css">
     </head>
     <body>
-        <div class="peca container" layout:fragment="content">
+        <div class="container" layout:fragment="content">
             <h1 class="h1-relatorio">APP WEB OFICINA</h1>
             <h2 class="h2-relatorio">Relatório de Mecanicos</h2>
 
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each=" mecanico : ${relatorioMecanicos}">
+                    <tr th:each=" mecanico : ${relatorioMecanicosHTML}">
                         <td th:text="${mecanico.id}">id</td>
                         <td th:text="${mecanico.razaoSocial}">Razao Social</td>                       
                         <td th:text="${mecanico.cpf_Cnpj}">id</td>
