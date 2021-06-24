@@ -81,7 +81,7 @@ public class PecaPDFExporter {
 
         PdfPTable table = new PdfPTable(4);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[]{1.5f, 3.5f, 3.0f, 3.0f});//Size of each column
+        table.setWidths(new float[]{1f, 3.5f, 3.0f, 2.0f});//Size of each column
         table.setSpacingBefore(15);//Put Space betweens p to table
 
         writeTableHeader(table);

@@ -66,14 +66,7 @@ public class MecanicoController {
         return "redirect:/mecanicos";
     }
 
-    //Method to display report of Mechanic
-//    @RequestMapping(value = "/relatorioMecanicos")
-//    public String relatorioMecanicos(Model model) {
-//        List<Mecanico> list = service.findAllMecanicos();
-//        model.addAttribute("relatorioMecanicos", list);
-//        return "peca/relatorios/HTML-list-mecanicos";
-//    }
-    @GetMapping("/relatorioMecanicos")
+    @GetMapping("/relatorioMecanicosPDF")
     public void relatorioMecanicostoPDF(HttpServletResponse response) throws DocumentException, IOException {
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");

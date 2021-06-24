@@ -21,38 +21,38 @@ public class MecanicoPDFExporter {
 
     private void writeTableHeader(PdfPTable table) {
         PdfPCell cell = new PdfPCell();
-        cell.setBackgroundColor(Color.BLUE);
+        cell.setBackgroundColor(new java.awt.Color(0x8F, 0xBC, 0x8B));
         cell.setPadding(5);
 
         Font font = FontFactory.getFont(FontFactory.HELVETICA);
-        font.setColor(Color.WHITE);
+        font.setColor(Color.BLACK);
 
-        cell.setPhrase(new Phrase("Mecanico ID", font));
+        cell.setPhrase(new Phrase("ID", font));
 
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("razaoSocial", font));
+        cell.setPhrase(new Phrase("Razão Social", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("cpf_Cnpj", font));
+        cell.setPhrase(new Phrase("CPF/CNPJ", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("cep", font));
+        cell.setPhrase(new Phrase("CEP", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("endereco", font));
-        table.addCell(cell);
-        
-        cell.setPhrase(new Phrase("numero", font));
+        cell.setPhrase(new Phrase("Endereco", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("bairro", font));
+        cell.setPhrase(new Phrase("Nº", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("cidade", font));
+        cell.setPhrase(new Phrase("Bairro", font));
         table.addCell(cell);
-        
-         cell.setPhrase(new Phrase("telefone", font));
+
+        cell.setPhrase(new Phrase("Cidade", font));
+        table.addCell(cell);
+
+        cell.setPhrase(new Phrase("Telefone", font));
         table.addCell(cell);
 //
 //        cell.setPhrase(new Phrase("dataCriacao", font));
@@ -65,13 +65,13 @@ public class MecanicoPDFExporter {
             table.addCell(String.valueOf(mecanico.getId()));
             table.addCell(mecanico.getRazaoSocial());
             table.addCell(String.valueOf(mecanico.getCpf_Cnpj()));
-             table.addCell(mecanico.getCep());
-              table.addCell(mecanico.getEndereco());
-             table.addCell(String.valueOf(mecanico.getNumero()));
-                table.addCell(mecanico.getBairro());
-                   table.addCell(mecanico.getCidade());
-                  table.addCell(String.valueOf(mecanico.getTelefone()));
-                  
+            table.addCell(mecanico.getCep());
+            table.addCell(mecanico.getEndereco());
+            table.addCell(String.valueOf(mecanico.getNumero()));
+            table.addCell(mecanico.getBairro());
+            table.addCell(mecanico.getCidade());
+            table.addCell(String.valueOf(mecanico.getTelefone()));
+
         }
     }
 
@@ -81,18 +81,26 @@ public class MecanicoPDFExporter {
         PdfWriter.getInstance(document, response.getOutputStream());
 
         document.open();
-        Font font = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
-        font.setSize(18);
-        font.setColor(Color.BLUE);
+        //Font of H1(p1)
+        Font fontP1 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+        fontP1.setSize(18);
+        fontP1.setColor(Color.BLACK);
 
-        Paragraph p = new Paragraph("List of Mecanicos", font);
+        Font fontP2 = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+        fontP2.setSize(14);
+        fontP2.setColor(Color.BLACK);
+
+        Paragraph p = new Paragraph("APP WEB OFICINA", fontP1);
         p.setAlignment(Paragraph.ALIGN_CENTER);
+        p.setLeading(0);
+        Paragraph p2 = new Paragraph("Relatório de Peças", fontP2);
+        p2.setAlignment(Paragraph.ALIGN_CENTER);
 
         document.add(p);
-
+        document.add(p2);
         PdfPTable table = new PdfPTable(9);
         table.setWidthPercentage(100f);
-        table.setWidths(new float[]{1.5f, 3.5f, 3.0f, 3.0f, 1.5f, 1.5f, 3.5f, 3.0f, 3.0f});
+        table.setWidths(new float[]{1.5f, 3.5f, 3.0f, 3.0f, 3.5f, 1.5f, 3.0f, 3.0f, 3.0f});
         table.setSpacingBefore(15);//Put Space betweens p to table
 
         writeTableHeader(table);
