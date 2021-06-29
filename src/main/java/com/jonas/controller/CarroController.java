@@ -2,12 +2,18 @@ package com.jonas.controller;
 
 import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.Carro;
+import com.jonas.model.domain.CarroPDFExporter;
+import com.jonas.model.domain.PecaPDFExporter;
 import com.jonas.model.service.CarroService;
+import com.lowagie.text.DocumentException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,6 +67,17 @@ public class CarroController {
         List<Carro> list = service.findAllCarros();
         model.addAttribute("relatorioCarrosHTML", list);
         return "peca/relatorios/HTML-list-carros";
+    }
+    
+    //Method to export report of all parts to PDF
+    @GetMapping("/relatorioCarrosPDF")
+    public void relatorioCarrosPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        String headerKey = "Content-Disposition";
+
+        List<Carro> listCarros = service.findAllCarros();
+        CarroPDFExporter exporter = new CarroPDFExporter(listCarros);
+        exporter.export(response);
     }
 
 }
