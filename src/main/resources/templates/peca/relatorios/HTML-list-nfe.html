@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>AppWeb Oficina</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--CSS-->
+
+        <link rel="stylesheet" href="css/relatorios/relatorio.css">
+    </head>
+    <body>
+        <div class="peca container" layout:fragment="content">
+            <h1 class="h1-relatorio">APP WEB OFICINA</h1>
+            <h2 class="h2-relatorio">Relatório de NFEs</h2>
+
+            <table class="table-relatorio">
+                <thead class"td-relatorio">
+                    <tr>
+                        <th class="th-id">Id</th>
+                        <th class="th-table">Descricao</th>
+                        <th class="th-table">Preco</th>                        
+                        <th class="th-table">Data de Servico</th>   
+                        <th class="th-table">KM</th>
+                        <th class="th-table">Mecanico</th>
+                        <th class="th-table">Carro</th>                         
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="nfe : ${relatorioNfeHTML}">
+                        <td th:text="${nfe.id}"></td>
+                        <td th:text="${nfe.descricao}"></td>
+                        <td th:text="${nfe.preco}"></td>
+                        <td th:text="${nfe.dataServico}"></td>
+                        <td th:text="${nfe.km}"></td>
+                        <td th:text="${nfe.mecanico.razaoSocial}">  </td>
+                        <td th:text="${nfe.carro.modelo}"></td>
+                </tbody>
+            </table>
+
+        </div>
+
+    </body>
+</html>

@@ -75,6 +75,13 @@ public class NotaServicoController {
         service.deleteNFeById(id);
         return "redirect:/notasServico";
     }
+    
+     @RequestMapping(value = "/relatorioNfeHTML")
+    public String relatorioNfe(Model model) {
+        List<NotaServico> list = service.findAllNotasServico();
+        model.addAttribute("relatorioNfeHTML", list);
+        return "peca/relatorios/HTML-list-nfe";
+    }
 
     //Handling conversor string to a data 
     @InitBinder
