@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>AppWeb Oficina</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--CSS-->
+
+        <link rel="stylesheet" href="css/relatorios/relatorio.css">
+    </head>
+    <body>
+        <div class="peca container" layout:fragment="content">
+            <h1 class="h1-relatorio">APP WEB OFICINA</h1>
+            <h2 class="h2-relatorio">Relatório de Carros</h2>
+
+            <table class="table-relatorio">
+                <thead class"td-relatorio">
+                    <tr>
+                        <th class="th-id">Id</th>
+                        <th class="th-table">Modelo</th>
+                        <th class="th-table">Marca</th>                        
+                        <th class="th-table">Ano</th>   
+                        <th class="th-table">Chassi</th>
+                        <th class="th-table">Renavan</th>
+                        <th class="th-table">Cor</th>                        
+                        <th class="th-table">Combustivel</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="carro : ${relatorioCarrosHTML}">
+                        <td th:text="${carro.id}">id</td>
+                        <td th:text="${carro.modelo}">modelo</td>
+                        <td th:text="${carro.marca}">marca</td>
+                        <td th:text="${carro.ano}">ano</td>
+                        <td th:text="${carro.chassi}">chassi</td>
+                        <td th:text="${carro.Renavan}">Renavan</td>
+                        <td th:text="${carro.cor}">cor</td>
+                        <td th:text="${carro.combustivel}">combustivel</td>
+                </tbody>
+            </table>
+
+        </div>
+
+    </body>
+</html>

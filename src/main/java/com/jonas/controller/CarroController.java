@@ -55,4 +55,12 @@ public class CarroController {
         return "redirect:/carros";
     }
 
+    //Method to report of all cars
+    @RequestMapping(value = "/relatorioCarrosHTML")
+    public String relatorioCarrosHTML(Model model) {
+        List<Carro> list = service.findAllCarros();
+        model.addAttribute("relatorioCarrosHTML", list);
+        return "peca/relatorios/HTML-list-carros";
+    }
+
 }
