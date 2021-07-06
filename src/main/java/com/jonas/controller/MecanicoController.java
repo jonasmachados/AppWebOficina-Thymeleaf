@@ -4,6 +4,7 @@ import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.Mecanico;
 import com.jonas.model.domain.MecanicoPDFExporter;
 import com.jonas.model.service.MecanicoService;
+import com.jonas.repository.MecanicoRepository;
 import com.lowagie.text.DocumentException;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -14,14 +15,18 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -34,12 +39,12 @@ public class MecanicoController {
     @Autowired
     private MecanicoService service;
 
-    @RequestMapping(value = "/mecanicos")
-    public String findAllMecanicos(Model model) {
-        List<Mecanico> list = service.findAllMecanicos();
-        model.addAttribute("mecanicos", list);
-        return "mecanico/list-mecanico";
-    }
+//    @RequestMapping(value = "/mecanicos")
+//    public String findAllMecanicos(Model model) {
+//        List<Mecanico> list = service.findAllMecanicos();
+//        model.addAttribute("mecanicos", list);
+//        return "mecanico/list-mecanico";
+//    }
 
     @RequestMapping(path = {"/editMecanico", "/editMecanico{id}"})
     public String editMecanicoById(Model model, @PathVariable("id") Optional<Integer> id)
@@ -65,7 +70,7 @@ public class MecanicoController {
         service.deleteMecanicoById(id);
         return "redirect:/mecanicos";
     }
-    
+
     @RequestMapping(value = "/relatorioMecanicosHTML")
     public String relatorioPecas(Model model) {
         List<Mecanico> list = service.findAllMecanicos();
@@ -89,6 +94,16 @@ public class MecanicoController {
         MecanicoPDFExporter exporter = new MecanicoPDFExporter(listMecanicos);
         exporter.export(response);
 
+    }
+
+    //Method to filter table Mechanic
+    @RequestMapping("/mecanicos")
+    public String viewHomePage(Model model, @Param("keyword") String keyword) {
+        List<Mecanico> listMecanico = service.listAll(keyword);
+        model.addAttribute("listMecanico", listMecanico);
+        model.addAttribute("keyword", keyword);
+
+        return "mecanico/list-mecanico";
     }
 
     //Handling conversor string to a data 

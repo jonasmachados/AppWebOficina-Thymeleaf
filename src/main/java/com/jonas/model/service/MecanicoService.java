@@ -79,6 +79,12 @@ public class MecanicoService {
         }
     }
 
-    
+    //METHOD TO FIND KEYWORD TO SEARCH
+    public List<Mecanico> listAll(String keyword) {
+        if (keyword != null) {
+            return repository.search(keyword);
+        }
+        return repository.findAll();
+    }
 
 }
