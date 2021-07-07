@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MecanicoRepository extends JpaRepository<Mecanico, Integer> {
 
-    @Query("SELECT m FROM Mecanico m WHERE CONCAT(m.razaoSocial, ' ', m.cpf_Cnpj, ' ', m.cep, ' ', m.cep, m.endereco) LIKE %?1%")
+    @Query("SELECT m FROM Mecanico m WHERE lower(CONCAT(m.razaoSocial, ' ', m.cpf_Cnpj, ' ', m.cep, ' ', m.cep, m.endereco)) LIKE %?1%")
     public List<Mecanico> search(String keyword);
 
 }
