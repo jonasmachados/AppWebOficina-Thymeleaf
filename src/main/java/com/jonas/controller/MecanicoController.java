@@ -4,7 +4,6 @@ import com.jonas.exception.RecordNotFoundException;
 import com.jonas.model.domain.Mecanico;
 import com.jonas.model.domain.MecanicoPDFExporter;
 import com.jonas.model.service.MecanicoService;
-import com.jonas.repository.MecanicoRepository;
 import com.lowagie.text.DocumentException;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -22,11 +21,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
