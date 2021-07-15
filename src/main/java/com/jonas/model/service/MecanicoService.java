@@ -84,31 +84,26 @@ public class MecanicoService {
     }
 
     //METHOD TO FIND KEYWORD TO SEARCH
-//    public Page<Mecanico> listAll(int pageNum, String sortField, String sortDir, String Keyword) {
-//        int pageSize = 11;
-//        Pageable pageable = PageRequest.of(pageNum - 1, pageSize,
-//                sortDir.equals("asc") ? Sort.by(sortField).ascending()
-//                : Sort.by(sortField).descending()
-//        );
-//Sort sort = Sort.by(sortField);
-//sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
-//
-//Pageable pageable = PageRequest.of(pageNum -1, 6, sort);
-//
-//if (keyword != null) {
-//            return repository.findAll(keyword, pageable);
-//        }
-//
-//        return repository.findAll(pageable);
-//    }
-    public Page<Mecanico> listAll(int pageNum, String sortField, String sortDir) {
+    public Page<Mecanico> listAll(int pageNum, String sortField, String sortDir, String keyword) {
+        Sort sort = Sort.by(sortField);
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+        
+        Pageable pageable = PageRequest.of(pageNum - 1, 11, sort);
 
-        Pageable pageable = PageRequest.of(pageNum - 1, 5,
-                sortDir.equals("asc") ? Sort.by(sortField).ascending()
-                : Sort.by(sortField).descending()
-        );
+        if (keyword != null) {
+            return repository.findAll(keyword, pageable);
+        }
 
         return repository.findAll(pageable);
     }
+//    public Page<Mecanico> listAll(int pageNum, String sortField, String sortDir) {
+//
+//        Pageable pageable = PageRequest.of(pageNum - 1, 5,
+//                sortDir.equals("asc") ? Sort.by(sortField).ascending()
+//                : Sort.by(sortField).descending()
+//        );
+//
+//        return repository.findAll(pageable);
+//    }
 
 }

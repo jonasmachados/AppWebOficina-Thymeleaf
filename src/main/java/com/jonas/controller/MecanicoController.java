@@ -40,27 +40,31 @@ public class MecanicoController {
 
     @RequestMapping("/mecanicos")
     public String viewHomePage(Model model) {
-        return viewPage(model, 1, "razaoSocial", "asc");
+        String keyword = null;
+        return viewPage(model, 1, "razaoSocial", "asc", keyword);
     }
 
     @RequestMapping("/page/{pageNum}")
     public String viewPage(Model model,
-            @PathVariable(name = "pageNum") int pageNum,
+            @PathVariable("pageNum") int currentPage,
             @Param("sortField") String sortField,
-            @Param("sortDir") String sortDir) {
+            @Param("sortDir") String sortDir,
+            @Param("keyword") String keyword) {
 
-        Page<Mecanico> page = service.listAll(pageNum, sortField, sortDir);
+        Page<Mecanico> page = service.listAll(currentPage, sortField, sortDir, keyword);
+        long totalItems = page.getTotalElements();
+        int totalPages = page.getTotalPages();
 
         List<Mecanico> listMecanico = page.getContent();
 
-        model.addAttribute("currentPage", pageNum);
+        model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
-
         model.addAttribute("sortField", sortField);
         model.addAttribute("sortDir", sortDir);
-        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-
+        model.addAttribute("keyword", keyword);
+        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+        model.addAttribute("reverseSortDir", reverseSortDir);
         model.addAttribute("listMecanico", listMecanico);
 
         return "mecanico/list-mecanico";
