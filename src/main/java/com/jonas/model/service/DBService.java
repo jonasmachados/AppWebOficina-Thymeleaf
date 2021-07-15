@@ -18,7 +18,6 @@ import com.jonas.repository.NotaServicoRepository;
  *
  * @author Jonas, created 14/04/2021.
  */
-
 @Service
 public class DBService {
 
@@ -38,7 +37,7 @@ public class DBService {
     @Autowired
     private NotaServicoRepository servicoRepository;
 
-    public void instanciaBaseDeDados()throws Exception {
+    public void instanciaBaseDeDados() throws Exception {
         //Format of date
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -47,6 +46,7 @@ public class DBService {
 
         Mecanico m1 = new Mecanico(null, "Grand Pneus", 111, "37520-000", "Avenida Joao Pinheiros", 1008, "Centro", "Poços de Caldas", 36631724, "Observacoes", sdf.parse("21/02/2021"));
         Mecanico m2 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        
         Pecas p1 = new Pecas(null, "Retrovisor", sdf.parse("21/02/2021"), 100.0);
         Pecas p2 = new Pecas(null, "Parachoque", sdf.parse("21/02/2021"), 250.0);
 
