@@ -13,19 +13,20 @@ and open the template in the editor.
         <title>AppWeb Oficina</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-        <link rel="stylesheet" href="css/peca/peca.css">
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/container.css">
+        <!--CSS-->
+        <link th:href="@{/css/peca/peca.css}" rel="stylesheet" />
+        <link th:href="@{/css/reset.css}" rel="stylesheet" />
+        <link th:href="@{/css/container.css}" rel="stylesheet" />
 
     </head>
     <body>
         <div class="peca container" layout:fragment="content">
-            
+
             <div class="divBt-peca">
                 <a href="/editPeca" class="btn btn-dark btn-lg divBt">
                     Add Peca</a>
             </div>
-            
+
             <h2 class="h2-peca">List of car Parts</h2>
 
             <table class="table table-striped table-bordered table-condensed table-hover">
