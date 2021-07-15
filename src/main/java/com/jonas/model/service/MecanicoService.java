@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -33,10 +37,10 @@ public class MecanicoService {
             entity = repository.save(entity);
             return entity;
         } else {
-            Optional<Mecanico> mecanico = repository.findById(entity.getId());
+            Optional<Mecanico> listMecanico = repository.findById(entity.getId());
 
-            if (mecanico.isPresent()) {
-                Mecanico newMecanico = mecanico.get();
+            if (listMecanico.isPresent()) {
+                Mecanico newMecanico = listMecanico.get();
                 newMecanico.setRazaoSocial(entity.getRazaoSocial());
                 newMecanico.setCpf_Cnpj(entity.getCpf_Cnpj());
                 newMecanico.setCep(entity.getCep());
@@ -60,10 +64,10 @@ public class MecanicoService {
     }
 
     public Mecanico getMecanicoById(Integer id) throws RecordNotFoundException {
-        Optional<Mecanico> mecanico = repository.findById(id);
+        Optional<Mecanico> listMecanico = repository.findById(id);
 
-        if (mecanico.isPresent()) {
-            return mecanico.get();
+        if (listMecanico.isPresent()) {
+            return listMecanico.get();
         } else {
             throw new RecordNotFoundException("No mecanico record exist for given id");
         }
@@ -80,11 +84,31 @@ public class MecanicoService {
     }
 
     //METHOD TO FIND KEYWORD TO SEARCH
-    public List<Mecanico> listAll(String keyword) {
-        if (keyword != null) {
-            return repository.search(keyword);
-        }
-        return repository.findAll();
+//    public Page<Mecanico> listAll(int pageNum, String sortField, String sortDir, String Keyword) {
+//        int pageSize = 11;
+//        Pageable pageable = PageRequest.of(pageNum - 1, pageSize,
+//                sortDir.equals("asc") ? Sort.by(sortField).ascending()
+//                : Sort.by(sortField).descending()
+//        );
+//Sort sort = Sort.by(sortField);
+//sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+//
+//Pageable pageable = PageRequest.of(pageNum -1, 6, sort);
+//
+//if (keyword != null) {
+//            return repository.findAll(keyword, pageable);
+//        }
+//
+//        return repository.findAll(pageable);
+//    }
+    public Page<Mecanico> listAll(int pageNum, String sortField, String sortDir) {
+
+        Pageable pageable = PageRequest.of(pageNum - 1, 5,
+                sortDir.equals("asc") ? Sort.by(sortField).ascending()
+                : Sort.by(sortField).descending()
+        );
+
+        return repository.findAll(pageable);
     }
 
 }

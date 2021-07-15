@@ -5,10 +5,10 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>AppWeb Oficina</title>
         <!-- Css -->
-        <link rel="stylesheet" href="css/menu.css">
-        <link rel="stylesheet" href="css/footerNew.css">
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/container.css">
+        <link th:href="@{/css/menu.css}" rel="stylesheet" />
+        <link th:href="@{/css/footerNew.css}" rel="stylesheet" />
+        <link th:href="@{/css/reset.css}" rel="stylesheet" />
+        <link th:href="@{/css/container.css}" rel="stylesheet" />
 
     </head>
 
@@ -73,9 +73,9 @@
                         <!--REPORT OF NFE-->
                         <li><a href="#">Notas de Servico</a>
                             <ul class="sub-menu">
-                                  <li><a th:href="@{/relatorioNfeHTML}">NFE HTML</a></li>
+                                <li><a th:href="@{/relatorioNfeHTML}">NFE HTML</a></li>
                                 <li><a th:href="@{/relatorioNfePDF}">NFE PDF</a></li>
-                              
+
                             </ul>
                         </li> 
                         <li><a href="#">Servicos por Oficina</a></li>

@@ -14,6 +14,10 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +26,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -35,29 +38,32 @@ public class MecanicoController {
     @Autowired
     private MecanicoService service;
 
-//    @RequestMapping(value = "/mecanicos")
-//    public String findAllMecanicos(Model model) {
-//        List<Mecanico> list = service.findAllMecanicos();
-//        model.addAttribute("mecanicos", list);
-//        return "mecanico/list-mecanico";
-//    }
-
-    @RequestMapping(path = {"/editMecanico", "/editMecanico{id}"})
-    public String editMecanicoById(Model model, @PathVariable("id") Optional<Integer> id)
-            throws RecordNotFoundException {
-        if (id.isPresent()) {
-            Mecanico entity = service.getMecanicoById(id.get());
-            model.addAttribute("mecanico", entity);
-        } else {
-            model.addAttribute("mecanico", new Mecanico());
-        }
-        return "mecanico/add-edit-mecanico";
+    @RequestMapping("/mecanicos")
+    public String viewHomePage(Model model) {
+        return viewPage(model, 1, "razaoSocial", "asc");
     }
 
-    @RequestMapping(path = "/createMecanico", method = RequestMethod.POST)
-    public String createOrUpdateMecanico(Mecanico mecanico) {
-        service.createOrUpdateMecanico(mecanico);
-        return "redirect:/mecanicos"; //REDIRECT: back to previous HTML.
+    @RequestMapping("/page/{pageNum}")
+    public String viewPage(Model model,
+            @PathVariable(name = "pageNum") int pageNum,
+            @Param("sortField") String sortField,
+            @Param("sortDir") String sortDir) {
+
+        Page<Mecanico> page = service.listAll(pageNum, sortField, sortDir);
+
+        List<Mecanico> listMecanico = page.getContent();
+
+        model.addAttribute("currentPage", pageNum);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+
+        model.addAttribute("listMecanico", listMecanico);
+
+        return "mecanico/list-mecanico";
     }
 
     @RequestMapping(path = "/deleteMecanico/{id}")
@@ -92,16 +98,24 @@ public class MecanicoController {
 
     }
 
-    //Method to filter table Mechanic
-    @RequestMapping("/mecanicos")
-    public String viewHomePage(Model model, @Param("keyword") String keyword) {
-        List<Mecanico> listMecanico = service.listAll(keyword);
-        model.addAttribute("listMecanico", listMecanico);
-        model.addAttribute("keyword", keyword);
-
-        return "mecanico/list-mecanico";
-    }
-
+//    //Method to filter table Mechanic
+//    @RequestMapping("/mecanicos")
+//    public String viewHomePage(Model model,
+//            @PathVariable("PageNumber") int currentPage,
+//            @Param("sortField") String sortField,
+//            @Param("sortDir") String sortDir,
+//            @Param("keyword") String keyword) {
+//
+//        Page<Mecanico> listMecanico = service.listAll(currentPage, sortField, sortDir, keyword);
+//
+//        long totalItems = listMecanico.getTotalElements();
+//        int totalPages = listMecanico.getTotalPages();
+//
+//        model.addAttribute("listMecanico", listMecanico);
+//        model.addAttribute("keyword", keyword);
+//
+//        return "mecanico/list-mecanico";
+//    }
     //Handling conversor string to a data 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
