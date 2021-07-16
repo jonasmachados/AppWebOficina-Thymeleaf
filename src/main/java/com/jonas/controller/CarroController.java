@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +31,35 @@ public class CarroController {
     @Autowired
     private CarroService service;
 
-    @RequestMapping(value = "/carros")
-    public String findAllCarros(Model model) {
-        List<Carro> list = service.findAllCarros();
-        model.addAttribute("carros", list);
+    @RequestMapping("/carros")
+    public String viewHomePage(Model model) {
+        String keyword = null;
+        return viewPage(model, 1, "modelo", "asc", keyword);
+    }
+
+    @RequestMapping("/pageCarro/{pageNumCarro}")
+    public String viewPage(Model model,
+            @PathVariable("pageNumCarro") int currentPage,
+            @Param("sortField") String sortField,
+            @Param("sortDir") String sortDir,
+            @Param("keyword") String keyword) {
+
+        Page<Carro> pageCarro = service.listAll(currentPage, sortField, sortDir, keyword);
+        long totalItems = pageCarro.getTotalElements();
+        int totalPages = pageCarro.getTotalPages();
+
+        List<Carro> listCarro = pageCarro.getContent();
+
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", pageCarro.getTotalPages());
+        model.addAttribute("totalItems", pageCarro.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("keyword", keyword);
+        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+        model.addAttribute("reverseSortDir", reverseSortDir);
+        model.addAttribute("listCarro", listCarro);
+
         return "carro/list-carro";
     }
 
@@ -68,7 +95,7 @@ public class CarroController {
         model.addAttribute("relatorioCarrosHTML", list);
         return "peca/relatorios/HTML-list-carros";
     }
-    
+
     //Method to export report of all parts to PDF
     @GetMapping("/relatorioCarrosPDF")
     public void relatorioCarrosPDF(HttpServletResponse response) throws DocumentException, IOException {

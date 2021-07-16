@@ -43,9 +43,37 @@ public class DBService {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         Carro c1 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+        Carro c2 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c3 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c4 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c5 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c6 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c7 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c8 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c9 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
+
+        Carro c10 = new Carro(null, "Celta", "Chevrolet", 2004, "Renavan 11", "Chassi 22", "Prata", "Gasolina");
 
         Mecanico m1 = new Mecanico(null, "Grand Pneus", 111, "37520-000", "Avenida Joao Pinheiros", 1008, "Centro", "Poços de Caldas", 36631724, "Observacoes", sdf.parse("21/02/2021"));
         Mecanico m2 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m3 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m4 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m5 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m6 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m7 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m8 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m9 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+        Mecanico m10 = new Mecanico(null, "CASA PRADO", 111, "37520-000", "MARECHAL DEODORO", 589, "Centro", "Poços de Caldas", 37145878, "Observacoes", sdf.parse("25/02/2021"));
+
+        
+        
         
         Pecas p1 = new Pecas(null, "Retrovisor", sdf.parse("21/02/2021"), 100.0);
         Pecas p2 = new Pecas(null, "Parachoque", sdf.parse("21/02/2021"), 250.0);
@@ -59,8 +87,8 @@ public class DBService {
 
         nfe1.getPecas().addAll(Arrays.asList(p1, p2));
 
-        this.carroRepository.saveAll(Arrays.asList(c1));
-        this.mecanicoRepository.saveAll(Arrays.asList(m1, m2));
+        this.carroRepository.saveAll(Arrays.asList(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10));
+        this.mecanicoRepository.saveAll(Arrays.asList(m1, m2,m3,m4,m5,m6,m7,m8,m9,m10));
         this.pecaRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
         this.servicoRepository.saveAll(Arrays.asList(nfe1, nfe2, nfe3));
     }

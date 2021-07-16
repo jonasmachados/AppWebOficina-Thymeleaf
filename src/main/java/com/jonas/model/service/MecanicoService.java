@@ -88,7 +88,7 @@ public class MecanicoService {
         Sort sort = Sort.by(sortField);
         sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
         
-        Pageable pageable = PageRequest.of(pageNum - 1, 11, sort);
+        Pageable pageable = PageRequest.of(pageNum - 1, 4, sort);
 
         if (keyword != null) {
             return repository.findAll(keyword, pageable);

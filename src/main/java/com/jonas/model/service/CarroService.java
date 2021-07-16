@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,6 +22,20 @@ public class CarroService {
 
     @Autowired
     private CarroRepository repository;
+
+    //METHOD TO FIND KEYWORD TO SEARCH
+    public Page<Carro> listAll(int pageNumCarro, String sortField, String sortDir, String keyword) {
+        Sort sort = Sort.by(sortField);
+        sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+
+        Pageable pageable = PageRequest.of(pageNumCarro - 1, 4, sort);
+
+        if (keyword != null) {
+            return repository.findAll(keyword, pageable);
+        }
+
+        return repository.findAll(pageable);
+    }
 
     public List<Carro> findAllCarros() {
         List<Carro> result = (List<Carro>) repository.findAll();
