@@ -15,19 +15,18 @@
     <body>
         <div class="carros container" layout:fragment="content">
             <div class="divBt-car">
-                <a href="/edit" class="btn btn-dark btn-lg divBt">
-                    Add New Car</a>
+                <a href="/edit" class="btn btn-dark btn-lg divBt">Novo Carro</a>
             </div>
-            <h2 class="h2-car">List of Cars</h2>
+            <h2 class="h2-car">Lista de Carros</h2>
 
-            <form th:action="@{/pageCarro/1}">
+            <form class="form-pesquisa" th:action="@{/pageCarro/1}">
                 <input type="hidden" name="sortField" th:value="${sortField}"/>
                 <input type="hidden" name="sortDir" th:value="${sortDir}"/>
-                Filter: <input type="text" name="keyword" id="keyword" size="30" th:value="${keyword}" required />
+                Filtro: <input type="text" name="keyword" id="keyword" size="30" th:value="${keyword}" required />
                 &nbsp;
-                <input type="submit" value="Search" />
+                <input type="submit" value="Pesquisar" />
                 &nbsp;
-                <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+                <input type="button" value="Limpar" id="btnClear" onclick="clearSearch()" />
             </form>
 
             <script type="text/javascript">
@@ -40,25 +39,25 @@
                 <thead>
                     <tr>
                         <th class="thTable">
-                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">ID</a>
+                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a>
                         </th>
                         <th class="thTable">
-                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=modelo&sortDir=' + ${reverseSortDir}}">modelo</a>
+                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=modelo&sortDir=' + ${reverseSortDir}}">Modelo</a>
                         </th>
                         <th class="thTable">
-                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=marca&sortDir=' + ${reverseSortDir}}">marca</a>
+                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=marca&sortDir=' + ${reverseSortDir}}">Marca</a>
                         </th>
                         <th class="thTable">
-                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=ano&sortDir=' + ${reverseSortDir}}">ano</a>
+                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=ano&sortDir=' + ${reverseSortDir}}">Ano</a>
                         </th>
                         <th class="thTable">
-                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=chassi&sortDir=' + ${reverseSortDir}}">chassi</a>
+                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=chassi&sortDir=' + ${reverseSortDir}}">Chassi</a>
                         </th>
                         <th class="thTable">
                             <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=Renavan&sortDir=' + ${reverseSortDir}}">Renavan</a>
                         </th>
                         <th class="thTable">
-                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=cor&sortDir=' + ${reverseSortDir}}">cor</a>
+                            <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=cor&sortDir=' + ${reverseSortDir}}">Cor</a>
                         </th>
                         <th class="thTable">
                             <a th:href="@{'/pageCarro/' + ${currentPage} + '?sortField=combustivel&sortDir=' + ${reverseSortDir}}">Combustivel</a>
@@ -93,18 +92,18 @@
             </table>
 
             <div>&nbsp;</div>
-            <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+            <div><i>Ordenar pelo [[${sortField}]] em [[${sortDir}]] order</i></div>
             <div>&nbsp;</div>
-            <div th:if="${totalPages > 1}">
-                Total Items: [[${totalItems}]]
+            <div class="menu-paginas" th:if="${totalPages > 1}">
+                Total Itens: [[${totalItems}]]
                 &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
 
-                <a th:if="${currentPage > 1}" th:href="@{'/pageCarro/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
-                <span th:unless="${currentPage > 1}">First</span>
+                <a th:if="${currentPage > 1}" th:href="@{'/pageCarro/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Primeira</a>
+                <span th:unless="${currentPage > 1}">Primeira</span>
                 &nbsp;&nbsp;
 
-                <a th:if="${currentPage > 1}" th:href="@{'/pageCarro/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
-                <span th:unless="${currentPage > 1}">Previous</span>
+                <a th:if="${currentPage > 1}" th:href="@{'/pageCarro/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Anterior</a>
+                <span th:unless="${currentPage > 1}">Anterior</span>
 
                 &nbsp;&nbsp;
 
@@ -114,15 +113,14 @@
                     &nbsp;
                 </span>
 
-                <a th:if="${currentPage < totalPages}" th:href="@{'/pageCarro/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-                <span th:unless="${currentPage < totalPages}">Next</span>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/pageCarro/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Proxima</a>
+                <span th:unless="${currentPage < totalPages}">Proxima</span>
                 &nbsp;&nbsp;
 
-                <a th:if="${currentPage < totalPages}" th:href="@{'/pageCarro/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-                <span th:unless="${currentPage < totalPages}">Last</span>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/pageCarro/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Ultima</a>
+                <span th:unless="${currentPage < totalPages}">Ultima</span>
             </div>
 
-            <br><br><br><br>
         </div>
 
     </body>

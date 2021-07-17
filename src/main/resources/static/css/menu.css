@@ -92,7 +92,13 @@ label[for="bt_menu"]{
    left: 100%;;
    margin-top:-46px;
 }
-
+.form-pesquisa{
+/*    text-align: center;*/
+    padding-bottom: .5em;
+}
+.menu-paginas{
+    padding-bottom: 4.5em;
+}
 
 @media(max-width: 800px){
     label[for="bt_menu"]{
