@@ -9,6 +9,7 @@
         <link th:href="@{/css/carros/carros.css}" rel="stylesheet" />
         <link th:href="@{/css/reset.css}" rel="stylesheet" />
         <link th:href="@{/css/container}" rel="stylesheet" />
+        <link th:href="@{/css/cursos.css}" rel="stylesheet" />
 
     </head>
 
@@ -17,7 +18,7 @@
             <div class="divBt-car">
                 <a href="/edit" class="btn btn-dark btn-lg divBt">Novo Carro</a>
             </div>
-            <h2 class="h2-car">Lista de Carros</h2>
+            <h2 class="name-table">Lista de Carros</h2>
 
             <form class="form-pesquisa" th:action="@{/pageCarro/1}">
                 <input type="hidden" name="sortField" th:value="${sortField}"/>

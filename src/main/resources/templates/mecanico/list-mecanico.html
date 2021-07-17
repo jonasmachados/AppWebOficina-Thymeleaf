@@ -18,28 +18,27 @@ and open the template in the editor.
         <link th:href="@{/css/mecanico/mecanico.css}" rel="stylesheet" />
         <link th:href="@{/css/reset.css}" rel="stylesheet" />
         <link th:href="@{/css/container.css}" rel="stylesheet" />
+         <link th:href="@{/css/cursos.css}" rel="stylesheet" />
 
     </head>
     <body>
         <div class="mecanico container" layout:fragment="content">
 
             <div class="divBt-mecanico">
-                <a href="/editMecanico" class="btn btn-dark btn-lg divBt">
-                    Add Mechanic</a>
+                <a href="/editMecanico" class="btn btn-dark btn-lg divBt">Novo Mecanico</a>
             </div>
 
-            <h2 class="h2-mecanico">List of Mechanics</h2>
+            <h2 class="name-table">Lista de Mecanicos</h2>
 
-            <form th:action="@{/page/1}">
+            <form class="form-pesquisa" th:action="@{/page/1}">
                 <input type="hidden" name="sortField" th:value="${sortField}"/>
                 <input type="hidden" name="sortDir" th:value="${sortDir}"/>
-                Filter: <input type="text" name="keyword" id="keyword" size="30" th:value="${keyword}" required />
+                Filtro: <input type="text" name="keyword" id="keyword" size="30" th:value="${keyword}" required />
                 &nbsp;
-                <input type="submit" value="Search" />
+                <input type="submit" value="Pesquisar" />
                 &nbsp;
-                <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+                <input type="button" value="Limpar" id="btnClear" onclick="clearSearch()" />
             </form>
-
 
             <script type="text/javascript">
                 function clearSearch() {
@@ -112,18 +111,18 @@ and open the template in the editor.
             </table>
 
             <div>&nbsp;</div>
-            <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+            <div><i>Ordenar pelo [[${sortField}]] em [[${sortDir}]] order</i></div>
             <div>&nbsp;</div>
             <div th:if="${totalPages > 1}">
-                Total Items: [[${totalItems}]]
+                Total Itens: [[${totalItems}]]
                 &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
 
-                <a th:if="${currentPage > 1}" th:href="@{'/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
-                <span th:unless="${currentPage > 1}">First</span>
+                <a th:if="${currentPage > 1}" th:href="@{'/page/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Primeira</a>
+                <span th:unless="${currentPage > 1}">Primeira</span>
                 &nbsp;&nbsp;
 
-                <a th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
-                <span th:unless="${currentPage > 1}">Previous</span>
+                <a th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Anterior</a>
+                <span th:unless="${currentPage > 1}">Anterior</span>
 
                 &nbsp;&nbsp;
 
@@ -133,12 +132,12 @@ and open the template in the editor.
                     &nbsp;
                 </span>
 
-                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-                <span th:unless="${currentPage < totalPages}">Next</span>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Proxima</a>
+                <span th:unless="${currentPage < totalPages}">Proxima</span>
                 &nbsp;&nbsp;
 
-                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-                <span th:unless="${currentPage < totalPages}">Last</span>
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Ultima</a>
+                <span th:unless="${currentPage < totalPages}">Ultima</span>
             </div>
         </div>
     </body>

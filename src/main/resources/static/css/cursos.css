@@ -1,3 +1,10 @@
+.name-table{
+     font-size: 1.5em;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+    color: #696969;
+}
 .pTeste{
     color: window;
     padding-top: 50em;
