@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -69,6 +70,24 @@ public class MecanicoController {
 
         return "mecanico/list-mecanico";
     }
+    
+    @RequestMapping(path = {"/editMecanico", "/editMecanico{id}"})
+    public String editCategoryById(Model model, @PathVariable("id") Optional<Integer> id)
+            throws RecordNotFoundException {
+        if (id.isPresent()) {
+            Mecanico entity = service.getMecanicoById(id.get());
+            model.addAttribute("mecanico", entity);
+        } else {
+            model.addAttribute("mecanico", new Mecanico());
+        }
+        return "mecanico/add-edit-mecanico";
+    }
+
+    @RequestMapping(path = "/createMecanico", method = RequestMethod.POST)
+    public String createOrUpdateMecanico(Mecanico mecanico) {
+        service.createOrUpdateMecanico(mecanico);
+        return "redirect:/mecanicos"; //REDIRECT: back to previous HTML.
+    }
 
     @RequestMapping(path = "/deleteMecanico/{id}")
     public String deleteCarroById(Model model, @PathVariable("id") Integer id)
@@ -102,24 +121,6 @@ public class MecanicoController {
 
     }
 
-//    //Method to filter table Mechanic
-//    @RequestMapping("/mecanicos")
-//    public String viewHomePage(Model model,
-//            @PathVariable("PageNumber") int currentPage,
-//            @Param("sortField") String sortField,
-//            @Param("sortDir") String sortDir,
-//            @Param("keyword") String keyword) {
-//
-//        Page<Mecanico> listMecanico = service.listAll(currentPage, sortField, sortDir, keyword);
-//
-//        long totalItems = listMecanico.getTotalElements();
-//        int totalPages = listMecanico.getTotalPages();
-//
-//        model.addAttribute("listMecanico", listMecanico);
-//        model.addAttribute("keyword", keyword);
-//
-//        return "mecanico/list-mecanico";
-//    }
     //Handling conversor string to a data 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
