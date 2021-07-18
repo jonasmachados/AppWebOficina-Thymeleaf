@@ -17,29 +17,53 @@ and open the template in the editor.
         <link th:href="@{/css/peca/peca.css}" rel="stylesheet" />
         <link th:href="@{/css/reset.css}" rel="stylesheet" />
         <link th:href="@{/css/container.css}" rel="stylesheet" />
+        <link th:href="@{/css/cursos.css}" rel="stylesheet" />
 
     </head>
     <body>
         <div class="peca container" layout:fragment="content">
 
             <div class="divBt-peca">
-                <a href="/editPeca" class="btn btn-dark btn-lg divBt">
-                    Add Peca</a>
+                <a href="/editPeca" class="btn btn-dark btn-lg divBt">Nova Peça</a>
             </div>
 
-            <h2 class="h2-peca">List of car Parts</h2>
+            <h2 class="name-table">Listas de Pecas</h2>
+
+            <form class="form-pesquisa" th:action="@{/pagePeca/1}">
+                <input type="hidden" name="sortField" th:value="${sortField}"/>
+                <input type="hidden" name="sortDir" th:value="${sortDir}"/>
+                Filtro: <input type="text" name="keyword" id="keyword" size="30" th:value="${keyword}" required />
+                &nbsp;
+                <input type="submit" value="Pesquisar" />
+                &nbsp;
+                <input type="button" value="Limpar" id="btnClear" onclick="clearSearch()" />
+            </form>
+
+            <script type="text/javascript">
+                function clearSearch() {
+                    window.location = "[[@{/pecas}]]";
+                }
+            </script>
 
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <thead>
                     <tr>
-                        <th class="thTable">Id</th>
-                        <th class="thTable">Descricao</th>
-                        <th class="thTable">Data da Compra</th>                        
-                        <th class="thTable">Preco</th>                      
+                        <th class="thTable">
+                            <a th:href="@{'/pagePeca/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Id</a>
+                        </th>
+                        <th class="thTable">
+                            <a th:href="@{'/pagePeca/' + ${currentPage} + '?sortField=descricao&sortDir=' + ${reverseSortDir}}">Descricao</a>
+                        </th>
+                        <th class="thTable">
+                            <a th:href="@{'/pagePeca/' + ${currentPage} + '?sortField=dataCompra&sortDir=' + ${reverseSortDir}}">Data da Compra</a>
+                        </th>
+                        <th class="thTable">
+                            <a th:href="@{'/pagePeca/' + ${currentPage} + '?sortField=preco&sortDir=' + ${reverseSortDir}}">Preco</a>
+                        </th>  
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="peca : ${pecas}">
+                    <tr th:each="peca : ${listPecas}">
                         <td th:text="${peca.id}">id</td>
                         <td th:text="${peca.Descricao}">Descricao</td>
                         <td th:text="${#dates.format(peca.dataCompra, 'dd-MMM-yyyy')}"></td>

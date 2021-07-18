@@ -2,7 +2,10 @@
 package com.jonas.repository;
 
 import com.jonas.model.domain.Pecas;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,4 +15,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PecaRepository extends JpaRepository<Pecas, Integer>{
 
+    @Query("SELECT p FROM Pecas p WHERE "
+            + "lower(CONCAT(p.id, ' ', p.descricao, ' ', p.dataCompra, ' ', p.preco, ' '))"
+            + " LIKE %?1%")
+    public Page<Pecas> findAll(String keyword, Pageable pageable);
 }

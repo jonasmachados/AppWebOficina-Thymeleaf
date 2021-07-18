@@ -24,7 +24,7 @@ public class Pecas implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String Descricao;
+    private String descricao;
     private Date dataCompra;
     private Double preco;
 
@@ -33,9 +33,9 @@ public class Pecas implements Serializable {
     }
 
     //COSNTRUCTOR
-    public Pecas(Integer id, String Descricao, Date dataCompra, Double preco) {
+    public Pecas(Integer id, String descricao, Date dataCompra, Double preco) {
         this.id = id;
-        this.Descricao = Descricao;
+        this.descricao = descricao;
         this.dataCompra = dataCompra;
         this.preco = preco;
     }
@@ -76,11 +76,11 @@ public class Pecas implements Serializable {
     }
 
     public String getDescricao() {
-        return Descricao;
+        return descricao;
     }
 
     public void setDescricao(String Descricao) {
-        this.Descricao = Descricao;
+        this.descricao = descricao;
     }
 
     public Date getDataCompra() {

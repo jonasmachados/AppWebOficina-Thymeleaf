@@ -25,7 +25,7 @@
                 <tbody>
                     <tr th:each="peca : ${relatorioPecas}">
                         <td th:text="${peca.id}">id</td>
-                        <td th:text="${peca.Descricao}">Descricao</td>
+                        <td th:text="${peca.descricao}">Descricao</td>
                         <td th:text="${#dates.format(peca.dataCompra, 'dd-MMM-yyyy')}"></td>
                         <td th:text="${peca.preco}">preco</td> 
                 </tbody>

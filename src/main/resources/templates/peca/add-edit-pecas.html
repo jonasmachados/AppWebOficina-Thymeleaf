@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
          <!--CSS-->
-        <link th:href="@{css/nfe/css/peca/peca.css}" rel="stylesheet" />
+        <link th:href="@{css/peca/peca.css}" rel="stylesheet" />
         <link th:href="@{/css/reset.css}" rel="stylesheet" />
         <link th:href="@{/css/container.css}" rel="stylesheet" />
         
@@ -18,14 +18,14 @@
     <body>
         <div class="peca" layout:fragment="content">
             <div class="box-Principal-Peca">
-                <h3 class="h3-peca"> Register a new part of car</h3>
+                <h3 class="h3-peca"> Register uma nova peca de carro</h3>
 
                 <div class="boxLoginPeca">
                     <form action="#" th:action="@{/createPeca}" th:object="${peca}" method="post">
 
                         <div>
                             <label for="Descricao"></label> 
-                            <input type="text" th:field="*{Descricao}" class="form-peca" id="Descricao" placeholder="Descricao" />
+                            <input type="text" th:field="*{Descricao}" class="form-peca" id="descricao" placeholder="Descricao" />
                         </div>
                         <div>
                             <label for="dataCompra"></label> 

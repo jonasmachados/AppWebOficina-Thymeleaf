@@ -8,13 +8,6 @@
     color: white;
     background-color: #696969;
 }
-.h2-peca{
-    font-size: 1.5em;
-    padding-left: 50%;
-    padding-top: 1em;
-    padding-bottom: .5em;
-    color: #696969;
-}
 .box-Principal-Peca{
     display: grid;
     justify-content: center;

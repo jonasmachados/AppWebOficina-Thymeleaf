@@ -14,6 +14,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -34,10 +36,35 @@ public class PecaController {
     @Autowired
     private PecaService service;
 
-    @RequestMapping(value = "/pecas")
-    public String findAllPecas(Model model) {
-        List<Pecas> list = service.findAllPecas();
-        model.addAttribute("pecas", list);
+    @RequestMapping("/pecas")
+    public String viewHomePage(Model model) {
+        String keyword = null;
+        return viewPage(model, 1, "id", "asc", keyword);
+    }
+
+    @RequestMapping("/pagePeca/{pageNumPeca}")
+    public String viewPage(Model model,
+            @PathVariable("pageNumPeca") int currentPage,
+            @Param("sortField") String sortField,
+            @Param("sortDir") String sortDir,
+            @Param("keyword") String keyword) {
+
+        Page<Pecas> pagePeca = service.listAll(currentPage, sortField, sortDir, keyword);
+        long totalItems = pagePeca.getTotalElements();
+        int totalPages = pagePeca.getTotalPages();
+
+        List<Pecas> listPecas = pagePeca.getContent();
+
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", pagePeca.getTotalPages());
+        model.addAttribute("totalItems", pagePeca.getTotalElements());
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDir", sortDir);
+        model.addAttribute("keyword", keyword);
+        String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+        model.addAttribute("reverseSortDir", reverseSortDir);
+        model.addAttribute("listPecas", listPecas);
+
         return "peca/list-peca";
     }
 
